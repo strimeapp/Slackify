@@ -74,12 +74,8 @@ class Webhook extends AbstractWebhook
                 unset($values[$key]);
             }
             else {
-                switch ($key) {
-                    default:
-                        if (!is_string($value)) {
-                            throw new InvalidArgumentException("The  " . $key . " value must be a string.");
-                        }
-                        break;
+                if (!is_string($value)) {
+                    throw new InvalidArgumentException("The  " . $key . " value must be a string.");
                 }
             }
         }
