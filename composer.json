@@ -1,0 +1,40 @@
+{
+    "name": "strimeapp/slackify",
+    "type": "library",
+    "description": "Slackify, an Object Oriented library to communicate with Slack API",
+    "keywords": ["slack", "webhooks", "notifications", "api", "php", "communication", "chat"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Romain Biard",
+            "email": "contact@strime.io",
+            "homepage": "https://www.strime.io/"
+        }
+    ],
+    "require": {
+        "php": "^5.3.9 || ^7.0",
+        "guzzlehttp/guzzle": "^6.0",
+        "doctrine/cache": "^1.0",
+        "evenement/evenement": "^2.0 || ^1.0"
+    },
+    "require-dev": {
+        "sami/sami": "^4.0",
+        "silex/silex": "~2.0",
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "Strime\\Slackify": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Strime\\Slackify\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
