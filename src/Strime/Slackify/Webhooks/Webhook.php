@@ -18,7 +18,7 @@ use GuzzleHttp\Exception\RequestException;
 class Webhook extends AbstractWebhook
 {
     const SLACK_VALID_VALUES = array("message", "channel", "link", "link_text", "icon", "username");
-    const SLACK_VALID_ATTACHMENTS = array("fallback", "text", "pretext", "color", "fields");
+    const SLACK_VALID_ATTACHMENTS = array("fallback", "text", "pretext", "color", "fields", "author", "image_url", "thumb_url", "footer", "footer_icon", "ts");
     const SLACK_VALID_ATTACHMENTS_FIELDS = array("title", "value", "short");
 
 
@@ -150,6 +150,9 @@ class Webhook extends AbstractWebhook
         catch(RequestException $e) {
             throw new RuntimeException('The request to the webhook failed: '.$e->getMessage(), $e->getCode(), $e);
         }
+
+        // We re-initialize the attachments to prevent any conflict with a future message.
+        $this->attachments = array();
 
         return $this;
     }
