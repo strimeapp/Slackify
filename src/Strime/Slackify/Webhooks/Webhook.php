@@ -141,8 +141,8 @@ class Webhook extends AbstractWebhook
             $json_response = $client->request('POST', $this->url, [
                 'body' => json_encode( $params )
             ]);
-            $curl_status = $json_response->getStatusCode();
-            $response = json_decode( $json_response->getBody() );
+            // $curl_status = $json_response->getStatusCode();
+            // $response = json_decode( $json_response->getBody() );
         }
         catch(RequestException $e) {
             throw new RuntimeException('The request to the webhook failed: '.$e->getMessage(), $e->getCode(), $e);
