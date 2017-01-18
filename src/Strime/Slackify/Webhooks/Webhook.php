@@ -18,7 +18,7 @@ use GuzzleHttp\Exception\RequestException;
 class Webhook extends AbstractWebhook
 {
     const SLACK_VALID_VALUES = array("message", "channel", "link", "link_text", "icon", "username");
-    const SLACK_VALID_ATTACHMENTS = array("fallback", "text", "pretext", "color");
+    const SLACK_VALID_ATTACHMENTS = array("fallback", "text", "pretext", "color", "fields");
     const SLACK_VALID_ATTACHMENTS_FIELDS = array("title", "value", "short");
 
 
@@ -34,7 +34,7 @@ class Webhook extends AbstractWebhook
     }
 
 
-    
+
     /**
      * @return string
      */
@@ -66,11 +66,11 @@ class Webhook extends AbstractWebhook
      * @param  array $values
      * @return Webhook
      */
-    public function sendMessage($message, $channel = NULL, $link = NULL, $link_text = NULL, $icon = NULL, $username = NULL)
+    public function sendMessage($values)
     {
         // Parse the values to make sure they are valid
         foreach ($values as $key => $value) {
-            if(!in_array($key, SLACK_VALID_VALUES)) {
+            if(!in_array($key, self::SLACK_VALID_VALUES)) {
                 unset($values[$key]);
             }
             else {
@@ -90,9 +90,9 @@ class Webhook extends AbstractWebhook
         }
 
         // Encode the message
-        $message = str_replace('&', '&amp;', $message);
-        $message = str_replace('<', '&lt;', $message);
-        $message = str_replace('>', '&gt;', $message);
+        $values["message"] = str_replace('&', '&amp;', $values["message"]);
+        $values["message"] = str_replace('<', '&lt;', $values["message"]);
+        $values["message"] = str_replace('>', '&gt;', $values["message"]);
 
         // Add the link to the message if needed.
         if(isset($values["link"]) && ($values["link"] !== NULL)) {
@@ -148,7 +148,7 @@ class Webhook extends AbstractWebhook
             $response = json_decode( $json_response->getBody() );
         }
         catch(RequestException $e) {
-            throw new RuntimeException('The request to the webhook failed: '.$e->getRequest(), $e->getCode(), $e);
+            throw new RuntimeException('The request to the webhook failed: '.$e->getMessage(), $e->getCode(), $e);
         }
 
         return $this;
@@ -170,13 +170,13 @@ class Webhook extends AbstractWebhook
 
         // Browse the attachments to see if the key is valid.
         foreach ($attachments as $key => $value) {
-            if(in_array($key, SLACK_VALID_ATTACHMENTS)) {
+            if(!in_array($key, self::SLACK_VALID_ATTACHMENTS)) {
                 unset($attachments[$key]);
             }
         }
 
         // Check if a message has been defined
-        if(!isset($values["fallback"], $values["fields"], $values["fields"]["title"])) {
+        if(!isset($attachments["fallback"], $attachments["fields"], $attachments["fields"]["title"])) {
             throw new InvalidArgumentException("Attachment fields are missing.");
         }
 
