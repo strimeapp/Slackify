@@ -17,9 +17,8 @@ use GuzzleHttp\Exception\RequestException;
 
 class Webhook extends AbstractWebhook
 {
-    const SLACK_VALID_VALUES = array("message", "channel", "link", "link_text", "icon", "username");
-    const SLACK_VALID_ATTACHMENTS = array("fallback", "text", "pretext", "color", "fields", "author", "image_url", "thumb_url", "footer", "footer_icon", "ts");
-    const SLACK_VALID_ATTACHMENTS_FIELDS = array("title", "value", "short");
+    const SLACK_VALID_VALUES = "message,channel,link,link_text,icon,username";
+    const SLACK_VALID_ATTACHMENTS = "fallback,text,pretext,color,fields,author,image_url,thumb_url,footer,footer_icon,ts";
 
 
     /** @var string */
@@ -70,7 +69,11 @@ class Webhook extends AbstractWebhook
     {
         // Parse the values to make sure they are valid
         foreach ($values as $key => $value) {
-            if(!in_array($key, self::SLACK_VALID_VALUES)) {
+            
+            // Create an array with the valid values
+            $valid_values = explode(",", self::SLACK_VALID_VALUES);
+
+            if(!in_array($key, $valid_values)) {
                 unset($values[$key]);
             }
             else {
@@ -173,7 +176,11 @@ class Webhook extends AbstractWebhook
 
         // Browse the attachments to see if the key is valid.
         foreach ($attachments as $key => $value) {
-            if(!in_array($key, self::SLACK_VALID_ATTACHMENTS)) {
+
+            // Create an array with the valid values
+            $valid_values = explode(",", self::SLACK_VALID_ATTACHMENTS);
+
+            if(!in_array($key, $valid_values)) {
                 unset($attachments[$key]);
             }
         }
