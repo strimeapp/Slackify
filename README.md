@@ -1,8 +1,10 @@
 # Slackify
 
+[![Build Status](https://travis-ci.org/strimeapp/Slackify.svg?branch=master)](https://travis-ci.org/strimeapp/Slackify)
+
 Slackify is a PHP bundle which lets you communicate with Slack API.
 
-[![Build Status](https://travis-ci.org/strimeapp/Slackify.svg?branch=master)](https://travis-ci.org/strimeapp/Slackify)
+It has been initially developed for [Strime](https://www.strime.io).
 
 ## Installation
 

@@ -1,0 +1,23 @@
+{
+    "name": "Strime\\Slackify\\Webhooks\\WebhooksInterface",
+    "line": 14,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Strime\\Slackify\\Webhooks",
+    "file": "src\/Strime\/Slackify\/Webhooks\/WebhooksInterface.php",
+    "relative_file": null,
+    "hash": "f4c93c2edf8ae5d0b32c6811f8fcd1bfb37b4675",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": true,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

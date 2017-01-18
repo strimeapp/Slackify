@@ -1,0 +1,23 @@
+{
+    "name": "Strime\\Slackify\\Exception\\ExecutableNotFoundException",
+    "line": 14,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Strime\\Slackify\\Exception",
+    "file": "src\/Strime\/Slackify\/Exception\/ExecutableNotFoundException.php",
+    "relative_file": null,
+    "hash": "3e7e640c378f9e86e119a5751ab6639786d997be",
+    "parent": "Strime\\Slackify\\Exception\\RuntimeException",
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Strime\\Slackify\\Exception\\ExceptionInterface",
+    "line": 14,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Strime\\Slackify\\Exception",
+    "file": "src\/Strime\/Slackify\/Exception\/ExceptionInterface.php",
+    "relative_file": null,
+    "hash": "460248d73e3b60e47d54b5b53379965f979f144b",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": true,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

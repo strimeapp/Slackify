@@ -1,0 +1,25 @@
+{
+    "name": "Strime\\Slackify\\Exception\\InvalidArgumentException",
+    "line": 14,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Strime\\Slackify\\Exception",
+    "file": "src\/Strime\/Slackify\/Exception\/InvalidArgumentException.php",
+    "relative_file": null,
+    "hash": "02ad08177c7e930856f2dfed477baf0c2ebbebb0",
+    "parent": "InvalidArgumentException",
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": {
+        "Strime\\Slackify\\Exception\\ExceptionInterface": "Strime\\Slackify\\Exception\\ExceptionInterface"
+    },
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

@@ -77,12 +77,8 @@ class Webhook extends AbstractWebhook
                 unset($values[$key]);
             }
             else {
-                switch ($key) {
-                    default:
-                        if (!is_string($value)) {
-                            throw new InvalidArgumentException("The  " . $key . " value must be a string.");
-                        }
-                        break;
+                if (!is_string($value)) {
+                    throw new InvalidArgumentException("The  " . $key . " value must be a string.");
                 }
             }
         }
@@ -129,7 +125,8 @@ class Webhook extends AbstractWebhook
                 $icon_type = "url";
             }
 
-            $params["icon_".$icon_type] = $values["icon"];
+            if($icon_type != NULL)
+                $params["icon_".$icon_type] = $values["icon"];
         }
 
         if(isset($values["username"]) && ($values["username"] !== NULL)) {
@@ -147,8 +144,8 @@ class Webhook extends AbstractWebhook
             $json_response = $client->request('POST', $this->url, [
                 'body' => json_encode( $params )
             ]);
-            $curl_status = $json_response->getStatusCode();
-            $response = json_decode( $json_response->getBody() );
+            // $curl_status = $json_response->getStatusCode();
+            // $response = json_decode( $json_response->getBody() );
         }
         catch(RequestException $e) {
             throw new RuntimeException('The request to the webhook failed: '.$e->getMessage(), $e->getCode(), $e);
