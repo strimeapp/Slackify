@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- Creation of a Webhook class to send messages on webhooks.
 - Add github templates.
 - Add a LICENCE.
 - Add a composer.json file.
