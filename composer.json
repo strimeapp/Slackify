@@ -12,15 +12,15 @@
         }
     ],
     "require": {
-        "php": "^5.3.9 || ^7.0",
+        "php": "^5.5 || ^7.0",
         "guzzlehttp/guzzle": "^6.0",
         "doctrine/cache": "^1.0",
         "evenement/evenement": "^2.0 || ^1.0"
     },
     "require-dev": {
-        "sami/sami": "^4.0",
+        "sami/sami": "^4.0 || 3.0",
         "silex/silex": "~2.0",
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7 || 4.8.31"
     },
     "autoload": {
         "psr-0": {
