@@ -18,9 +18,9 @@
         "evenement/evenement": "^2.0 || ^1.0"
     },
     "require-dev": {
-        "sami/sami": "^4.0 || ^3.0",
+        "sami/sami": "^4.0 || 3.0",
         "silex/silex": "~2.0",
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7 || 4.8.31"
     },
     "autoload": {
         "psr-0": {
