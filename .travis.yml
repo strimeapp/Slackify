@@ -26,4 +26,6 @@ install:
   - composer update --prefer-source $COMPOSER_FLAGS
 
 script:
-  - vendor/bin/phpunit --verbose
+  - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
