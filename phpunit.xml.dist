@@ -21,10 +21,13 @@
     </testsuites>
 
     <filter>
-      <blacklist>
-        <directory>vendor</directory>
-        <directory>tests</directory>
-      </blacklist>
+        <blacklist>
+            <directory>vendor</directory>
+            <directory>tests</directory>
+        </blacklist>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>src</directory>
+        </whitelist>
     </filter>
 </phpunit>
 
