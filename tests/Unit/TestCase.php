@@ -19,10 +19,16 @@ class TestCase extends \PHPUnit_Framework_TestCase
         return $this->getMock('Doctrine\Common\Cache\Cache');
     }
 
-    public function getWebhookMock()
+    public function getWebhookMock($url = null)
     {
-        return $this->getMockBuilder('Strime\Slackify\Webhooks\Webhook')
+        $webhook = $this->getMockBuilder('Strime\Slackify\Webhooks\Webhook')
             ->disableOriginalConstructor()
             ->getMock();
+
+        $webhook->expects($this->any())
+            ->method('getUrl')
+            ->will($this->returnValue($url));
+
+        return $webhook;
     }
 }
