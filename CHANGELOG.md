@@ -9,6 +9,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+### Changed
+
+[0.7.0] - 2017-01-18
+--------------------
+
+### Added
+
 - Creation of a Webhook class to send messages on webhooks.
 - Add github templates.
 - Add a LICENCE.
@@ -18,5 +25,3 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add a Travis-CI config file.
 - Add a PHPUnit config file.
 - Add a README file.
-
-### Changed
