@@ -9,6 +9,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- Add github templates.
+- Add a LICENCE.
+- Add a composer.json file.
 - Add a CHANGELOG. Guidelines to follow: [keepachangelog.com](http://keepachangelog.com/)
 - Add a .gitignore.
 - Add a Travis-CI config file.
@@ -16,5 +19,3 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add a README file.
 
 ### Changed
-
-- 
