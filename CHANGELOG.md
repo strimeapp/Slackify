@@ -13,6 +13,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- Adding a test on the icon_type variable in the sendMessage method
+- Simplification of a test in the sendMessage method
+
 [0.7.0] - 2017-01-18
 --------------------
 

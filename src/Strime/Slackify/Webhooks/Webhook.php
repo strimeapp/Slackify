@@ -122,7 +122,8 @@ class Webhook extends AbstractWebhook
                 $icon_type = "url";
             }
 
-            $params["icon_".$icon_type] = $values["icon"];
+            if($icon_type != NULL)
+                $params["icon_".$icon_type] = $values["icon"];
         }
 
         if(isset($values["username"]) && ($values["username"] !== NULL)) {
