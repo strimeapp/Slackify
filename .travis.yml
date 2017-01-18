@@ -16,9 +16,6 @@ php:
 matrix:
   allow_failures:
     - php: hhvm
-  include:
-    - php: 5.4
-      env: COMPOSER_FLAGS="--prefer-lowest"
 
 before_install:
   - sudo apt-get update -q
