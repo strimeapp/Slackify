@@ -73,7 +73,7 @@ class Webhook extends AbstractWebhook
             // Create an array with the valid values
             $valid_values = explode(",", self::SLACK_VALID_VALUES);
 
-            if(!in_array($key, $valid_values)) {
+            if (!in_array($key, $valid_values)) {
                 unset($values[$key]);
             }
             else {
@@ -84,7 +84,7 @@ class Webhook extends AbstractWebhook
         }
 
         // Check if a message has been defined
-        if(!isset($values["message"])) {
+        if (!isset($values["message"])) {
             throw new InvalidArgumentException("The message value is missing.");
         }
 
@@ -94,13 +94,13 @@ class Webhook extends AbstractWebhook
         $values["message"] = str_replace('>', '&gt;', $values["message"]);
 
         // Add the link to the message if needed.
-        if(isset($values["link"]) && ($values["link"] !== NULL)) {
+        if (isset($values["link"]) && ($values["link"] !== NULL)) {
             $values["message"] .= "\n";
-            $values["message"] .=  "<" . $values["link"]; 
+            $values["message"] .= "<" . $values["link"]; 
             if(isset($values["link_text"]) && ($values["link_text"] !== NULL)) {
-                $values["message"] .=  "|" . $values["link_text"];
+                $values["message"] .= "|" . $values["link_text"];
             }
-            $values["message"] .=  ">" ;
+            $values["message"] .= ">" ;
         }
 
         // Set the parameters for the request
@@ -108,33 +108,33 @@ class Webhook extends AbstractWebhook
             "text" => $values["message"]
         );
 
-        if(isset($values["channel"]) && ($values["channel"] !== NULL)) {
+        if (isset($values["channel"]) && ($values["channel"] !== NULL)) {
             $params["channel"] = $values["channel"];
         }
 
-        if(isset($values["icon"]) && ($values["icon"] !== NULL)) {
+        if (isset($values["icon"]) && ($values["icon"] !== NULL)) {
 
             // The icon may either be a URL or an emoji
             // We need to check the form of the string to know which parameter to choose.
             $icon_type = NULL;
 
-            if((strcmp(substr($values["icon"], 0, 1), ":") == 0) && (strcmp(substr($values["icon"], -1), ":") == 0)) {
+            if ((strcmp(substr($values["icon"], 0, 1), ":") == 0) && (strcmp(substr($values["icon"], -1), ":") == 0)) {
                 $icon_type = "emoji";
             }
             else {
                 $icon_type = "url";
             }
 
-            if($icon_type != NULL)
-                $params["icon_".$icon_type] = $values["icon"];
+            if ($icon_type != NULL)
+                $params["icon_" . $icon_type] = $values["icon"];
         }
 
-        if(isset($values["username"]) && ($values["username"] !== NULL)) {
+        if (isset($values["username"]) && ($values["username"] !== NULL)) {
             $params["username"] = $values["username"];
         }
 
         // Check if there are attachments to add to the request
-        if(is_array($this->attachments) && (count($this->attachments) > 0)) {
+        if (is_array($this->attachments) && (count($this->attachments) > 0)) {
             $params["attachments"] = $this->attachments;
         }
 
@@ -177,13 +177,13 @@ class Webhook extends AbstractWebhook
             // Create an array with the valid values
             $valid_values = explode(",", self::SLACK_VALID_ATTACHMENTS);
 
-            if(!in_array($key, $valid_values)) {
+            if (!in_array($key, $valid_values)) {
                 unset($attachments[$key]);
             }
         }
 
         // Check if a message has been defined
-        if(!isset($attachments["fallback"], $attachments["fields"], $attachments["fields"]["title"])) {
+        if (!isset($attachments["fallback"], $attachments["fields"], $attachments["fields"]["title"])) {
             throw new InvalidArgumentException("Attachment fields are missing.");
         }
 

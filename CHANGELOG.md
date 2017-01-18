@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- Improved readibility in Webhook class.
 - We comment for future use variables assignation.
 - Adding a test on the icon_type variable in the sendMessage method
 - Simplification of a test in the sendMessage method
