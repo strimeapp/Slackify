@@ -40,6 +40,20 @@ class WebhookTest extends AbstractWebhookTestCase
 
         $webhook->sendMessage(array("message" => $message, "username" => $username, "link" => $link, "link_text" => $link_text, "icon" => $icon));
     }
+    
+    /**
+     * @dataProvider provideValuesWithAttachments
+     */
+    public function testSendMessageShouldSendMessageWithAttachments($message, $username, $link, $link_text, $icon, $fields)
+    {
+        $webhook = $this->getWebhookMock('http://www.foo.bar');
+
+        $webhook->expects($this->once())
+            ->method('sendMessage')
+            ->with(array("message" => $message, "username" => $username, "link" => $link, "link_text" => $link_text, "icon" => $icon, "fields" => $fields));
+
+        $webhook->sendMessage(array("message" => $message, "username" => $username, "link" => $link, "link_text" => $link_text, "icon" => $icon, "fields" => $fields));
+    }
 
     public function provideValues()
     {
@@ -49,6 +63,17 @@ class WebhookTest extends AbstractWebhookTestCase
             array("Foo bar", "Bobby", "https://www.strime.io", NULL, ":taco:"),
             array("Foo bar", "Bobby", "https://www.strime.io", "Strime", ":taco:"),
             array("Foo bar", "Bobby", "https://www.strime.io", "Strime", NULL),
+        );
+    }
+
+    public function provideValuesWithAttachments()
+    {
+        return array(
+            array("Foo bar", NULL, NULL, NULL, NULL, array()),
+            array("Foo bar", "Bobby", NULL, NULL, ":taco:", array("title" => "Test")),
+            array("Foo bar", "Bobby", "https://www.strime.io", NULL, ":taco:", array("title" => "Test", "value" => "A value")),
+            array("Foo bar", "Bobby", "https://www.strime.io", "Strime", ":taco:", array("title" => "Test", "value" => "A value", "short" => TRUE)),
+            array("Foo bar", "Bobby", "https://www.strime.io", "Strime", NULL, array()),
         );
     }
 }
