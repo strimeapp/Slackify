@@ -1,0 +1,42 @@
+{
+    "name": "Strime\\Slackify\\Slackify",
+    "line": 18,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Strime\\Slackify",
+    "file": "src\/Strime\/Slackify\/Slackify.php",
+    "relative_file": null,
+    "hash": "df751997bc6b56ad27c9d20e53ef9b1d2e0c72b4",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "InvalidArgumentException": "Strime\\Slackify\\Exception\\InvalidArgumentException",
+        "RuntimeException": "Strime\\Slackify\\Exception\\RuntimeException",
+        "LoggerInterface": "Psr\\Log\\LoggerInterface"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

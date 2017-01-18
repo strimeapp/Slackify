@@ -1,0 +1,235 @@
+{
+    "name": "Strime\\Slackify\\Webhooks\\Webhook",
+    "line": 18,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "Strime\\Slackify\\Webhooks",
+    "file": "src\/Strime\/Slackify\/Webhooks\/Webhook.php",
+    "relative_file": null,
+    "hash": "5b01fef3cb431c4d3f61d4f1be9e396635d78bb6",
+    "parent": "Strime\\Slackify\\Webhooks\\AbstractWebhook",
+    "modifiers": null,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "RuntimeException": "Strime\\Slackify\\Exception\\RuntimeException",
+        "InvalidArgumentException": "Strime\\Slackify\\Exception\\InvalidArgumentException",
+        "RequestException": "GuzzleHttp\\Exception\\RequestException"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": {
+        "url": {
+            "name": "url",
+            "line": 26,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        },
+        "attachments": {
+            "name": "attachments",
+            "line": 28,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 31,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "url": {
+                    "name": "url",
+                    "line": 31,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getUrl": {
+            "name": "getUrl",
+            "line": 41,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setUrl": {
+            "name": "setUrl",
+            "line": 51,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Strime\\Slackify\\Webhooks\\WebhooksInterface",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "url": {
+                    "name": "url",
+                    "line": 51,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "sendMessage": {
+            "name": "sendMessage",
+            "line": 69,
+            "short_desc": "{@inheritdoc}",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Strime\\Slackify\\Webhooks\\Webhook",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "values": {
+                    "name": "values",
+                    "line": 69,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setAttachments": {
+            "name": "setAttachments",
+            "line": 168,
+            "short_desc": "{@inheritdoc}",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Strime\\Slackify\\Webhooks\\Webhook",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "attachments": {
+                    "name": "attachments",
+                    "line": 168,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": {
+        "SLACK_VALID_VALUES": {
+            "name": "SLACK_VALID_VALUES",
+            "line": 20,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "SLACK_VALID_ATTACHMENTS": {
+            "name": "SLACK_VALID_ATTACHMENTS",
+            "line": 21,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "SLACK_VALID_ATTACHMENTS_FIELDS": {
+            "name": "SLACK_VALID_ATTACHMENTS_FIELDS",
+            "line": 22,
+            "short_desc": "",
+            "long_desc": ""
+        }
+    }
+}
