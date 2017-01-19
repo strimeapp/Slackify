@@ -7,18 +7,27 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [Unreleased]
 ------------
 
+[0.1.2] - 2017-01-19
+--------------------
+
 ### Added
 
 - Creation of the API documentation
 
 ### Changed
 
+- Fixed a bug in the way we send attachments.
 - Improved readibility in Webhook class.
 - We comment for future use variables assignation.
 - Adding a test on the icon_type variable in the sendMessage method
 - Simplification of a test in the sendMessage method
 
-[0.7.0] - 2017-01-18
+[0.1.1] - 2017-01-18
+--------------------
+
+- Creation of the API documentation
+
+[0.1.0] - 2017-01-18
 --------------------
 
 ### Added
