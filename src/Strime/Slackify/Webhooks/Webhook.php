@@ -141,7 +141,7 @@ class Webhook extends AbstractWebhook
         try {
             $client = new \GuzzleHttp\Client();
             $json_response = $client->request('POST', $this->url, [
-                'body' => $params
+                'body' => json_encode( $params )
             ]);
         }
         catch(RequestException $e) {
