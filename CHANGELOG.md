@@ -10,10 +10,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.1.2] - 2017-01-19
 --------------------
 
-### Added
-
-- Creation of the API documentation
-
 ### Changed
 
 - Fixed a bug in the way we send attachments.
@@ -24,6 +20,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 [0.1.1] - 2017-01-18
 --------------------
+
+### Added
 
 - Creation of the API documentation
 

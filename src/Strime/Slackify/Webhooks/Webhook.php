@@ -96,10 +96,10 @@ class Webhook extends AbstractWebhook
         if (isset($values["link"]) && ($values["link"] !== NULL)) {
             $values["message"] .= "\n";
             $values["message"] .= "<" . $values["link"]; 
-            if(isset($values["link_text"]) && ($values["link_text"] !== NULL)) {
+            if (isset($values["link_text"]) && ($values["link_text"] !== NULL)) {
                 $values["message"] .= "|" . $values["link_text"];
             }
-            $values["message"] .= ">" ;
+            $values["message"] .= ">";
         }
 
         // Set the parameters for the request
@@ -141,10 +141,10 @@ class Webhook extends AbstractWebhook
         try {
             $client = new \GuzzleHttp\Client();
             $json_response = $client->request('POST', $this->url, [
-                'body' => json_encode( $params )
+                'body' => json_encode($params)
             ]);
         }
-        catch(RequestException $e) {
+        catch (RequestException $e) {
             throw new RuntimeException('The request to the webhook failed: '.$e->getMessage(), $e->getCode(), $e);
         }
 
@@ -175,13 +175,13 @@ class Webhook extends AbstractWebhook
                 // Create an array with the valid values
                 $valid_values = explode(",", self::SLACK_VALID_ATTACHMENTS);
 
-                if(!in_array($key, $valid_values)) {
+                if (!in_array($key, $valid_values)) {
                     unset($attachment[$key]);
                 }
             }
 
             // Check if a message has been defined
-            if(!isset($attachment["fallback"], $attachment["fields"], $attachment["fields"]["title"])) {
+            if (!isset($attachment["fallback"], $attachment["fields"], $attachment["fields"]["title"])) {
                 throw new InvalidArgumentException("Attachment fields are missing.");
             }
         }
