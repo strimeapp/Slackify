@@ -42,16 +42,20 @@ If you want to send attachments allong to your message, you can do it like this,
 ```php
 $webhook = new Webhook("https://hooks.slack.com/services/YOUR/WEBHOOK");
 
-$webhook->setAttachments(array(
-    "fallback" => "A fallback text",
-    "text" => "The text of your attachment",
-    "color" => "#123456",
-    "fields" => array(
-        "title" => "My attachment",
-        "value" => "The value of my attachment",
-        "short" => FALSE
+$webhook->setAttachments(
+    array(
+        array(
+            "fallback" => "A fallback text",
+            "text" => "The text of your attachment",
+            "color" => "#123456",
+            "fields" => array(
+                "title" => "My attachment",
+                "value" => "The value of my attachment",
+                "short" => FALSE
+            )
+        )
     )
-));
+);
 
 $webhook->sendMessage(array(
     "message" => "My first message",

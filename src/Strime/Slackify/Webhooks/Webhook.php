@@ -18,7 +18,7 @@ use GuzzleHttp\Exception\RequestException;
 class Webhook extends AbstractWebhook
 {
     const SLACK_VALID_VALUES = "message,channel,link,link_text,icon,username";
-    const SLACK_VALID_ATTACHMENTS = "fallback,text,pretext,color,fields,author,image_url,thumb_url,footer,footer_icon,ts";
+    const SLACK_VALID_ATTACHMENTS = "fallback,text,pretext,color,fields,author,author_link,title,title_link,image_url,thumb_url,footer,footer_icon,ts";
 
 
     /** @var string */
@@ -37,8 +37,7 @@ class Webhook extends AbstractWebhook
     /**
      * @return string
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 
@@ -47,8 +46,8 @@ class Webhook extends AbstractWebhook
      *
      * @return WebhooksInterface
      */
-    public function setUrl($url)
-    {
+    public function setUrl($url) {
+
         if (!is_string($url)) {
             throw new InvalidArgumentException('The URL must be a string.');
         }
@@ -65,8 +64,8 @@ class Webhook extends AbstractWebhook
      * @param  array $values
      * @return Webhook
      */
-    public function sendMessage($values)
-    {
+    public function sendMessage($values) {
+
         // Parse the values to make sure they are valid
         foreach ($values as $key => $value) {
             
@@ -142,10 +141,8 @@ class Webhook extends AbstractWebhook
         try {
             $client = new \GuzzleHttp\Client();
             $json_response = $client->request('POST', $this->url, [
-                'body' => json_encode( $params )
+                'body' => $params
             ]);
-            // $curl_status = $json_response->getStatusCode();
-            // $response = json_decode( $json_response->getBody() );
         }
         catch(RequestException $e) {
             throw new RuntimeException('The request to the webhook failed: '.$e->getMessage(), $e->getCode(), $e);
@@ -172,19 +169,21 @@ class Webhook extends AbstractWebhook
         }
 
         // Browse the attachments to see if the key is valid.
-        foreach ($attachments as $key => $value) {
+        foreach ($attachments as $attachment) {
+            foreach ($attachment as $key => $value) {
+            
+                // Create an array with the valid values
+                $valid_values = explode(",", self::SLACK_VALID_ATTACHMENTS);
 
-            // Create an array with the valid values
-            $valid_values = explode(",", self::SLACK_VALID_ATTACHMENTS);
-
-            if (!in_array($key, $valid_values)) {
-                unset($attachments[$key]);
+                if(!in_array($key, $valid_values)) {
+                    unset($attachment[$key]);
+                }
             }
-        }
 
-        // Check if a message has been defined
-        if (!isset($attachments["fallback"], $attachments["fields"], $attachments["fields"]["title"])) {
-            throw new InvalidArgumentException("Attachment fields are missing.");
+            // Check if a message has been defined
+            if(!isset($attachment["fallback"], $attachment["fields"], $attachment["fields"]["title"])) {
+                throw new InvalidArgumentException("Attachment fields are missing.");
+            }
         }
 
         $this->attachments = $attachments;

@@ -14,8 +14,7 @@
     "require": {
         "php": "^5.5 || ^7.0",
         "guzzlehttp/guzzle": "^6.0",
-        "doctrine/cache": "^1.0",
-        "evenement/evenement": "^2.0 || ^1.0"
+        "doctrine/cache": "^1.0"
     },
     "require-dev": {
         "sami/sami": "^4.0 || 3.0",
