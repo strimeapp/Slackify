@@ -15,36 +15,32 @@ use Strime\Slackify\Exception\RuntimeException;
 use Strime\Slackify\Exception\InvalidArgumentException;
 use GuzzleHttp\Exception\RequestException;
 
-class Api extends AbstractApi
+class Auth extends AbstractApi
 {
     /**
      * {@inheritdoc}
      *
-     * @param  string $error
-     * @param  string $foo
-     * @return Api
+     * @param  string $token
+     * @param  boolean $test
+     * @return Auth
      */
-    public function test($error = NULL, $foo = NULL) {
+    public function revoke($token, $test = FALSE) {
 
         // Check if the type of the variables is valid.
-        if (($error != NULL) && !is_string($error)) {
-            throw new InvalidArgumentException("The type of the error variable is not valid.");
+        if (!is_string($token)) {
+            throw new InvalidArgumentException("The type of the token variable is not valid.");
         }
-        if (($error != NULL) && !is_string($foo)) {
-            throw new InvalidArgumentException("The type of the error variable is not valid.");
+        if (!is_bool($test)) {
+            throw new InvalidArgumentException("The type of the test variable is not valid.");
         }
 
         // Set the arguments of the request
-        $arguments = array();
+        $arguments = array(
+            "token" => $token,
+            "test" => $test
+        );
 
-        if($error != NULL) {
-            $arguments["error"] = $error;
-        }
-        if($foo != NULL) {
-            $arguments["foo"] = $foo;
-        }
-
-        $this->setUrl("api.test", $arguments);
+        $this->setUrl("auth.revoke", $arguments);
 
         // Send the request
         try {
