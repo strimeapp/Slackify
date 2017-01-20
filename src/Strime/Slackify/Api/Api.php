@@ -24,7 +24,7 @@ class Api extends AbstractApi
      *
      * @param  string $error
      * @param  string $foo
-     * @return SlashCommand
+     * @return Api
      */
     public function test($error = NULL, $foo = NULL) {
 
