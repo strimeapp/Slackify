@@ -94,12 +94,20 @@ Slackify also allows you to easily send requests to the API.
 
 In order to instantiate a connection to the API, you will need a token. You can generate test tokens [here](https://api.slack.com/docs/oauth-test-tokens).
 
+Each section of the [API documentation](https://api.slack.com/methods) has its own class with the corresponding methods.
+
 ```php
 use Strime\Slackify\Api\Api;
+use Strime\Slackify\Api\Auth;
 
+// API request
 $api_request = new Api("your-api-token-comes-here");
-
 $api_request->test();
+
+// Auth requests
+$api_auth_request = new Auth("your-api-token-comes-here");
+$api_auth_request->revoke("a-token-to-revoke", TRUE);
+$api_auth_request->test("a-token-to-test");
 ```
 
 
