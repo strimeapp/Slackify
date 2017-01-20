@@ -92,6 +92,8 @@ $webhook->sendMessage(array(
 
 Slackify also allows you to easily send requests to the API.
 
+In order to instantiate a connection to the API, you will need a token. You can generate test tokens [here](https://api.slack.com/docs/oauth-test-tokens).
+
 ```php
 use Strime\Slackify\Api\Api;
 
