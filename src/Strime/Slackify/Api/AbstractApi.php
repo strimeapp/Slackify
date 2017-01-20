@@ -13,7 +13,7 @@ namespace Strime\Slackify\Api;
 
 abstract class AbstractApi implements ApiInterface
 {
-	const SLACK_API_URL = "tps://slack.com/api/METHOD";
+	const SLACK_API_URL = "https://slack.com/api/METHOD";
 
 
     /** @var string */
