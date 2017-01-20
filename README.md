@@ -100,6 +100,7 @@ Each section of the [API documentation](https://api.slack.com/methods) has its o
 use Strime\Slackify\Api\Api;
 use Strime\Slackify\Api\Auth;
 use Strime\Slackify\Api\Bots;
+use Strime\Slackify\Api\Channels;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -113,6 +114,24 @@ $api_auth_request->test("a-token-to-test");
 // Bots requests
 $api_bots_request = new Bots("your-api-token-comes-here");
 $api_bots_request->info("B123456");
+
+// Channels requests
+$api_channels_request = new Channels("your-api-token-comes-here");
+$api_channels_request->archive("C123456");
+$api_channels_request->create("C123456");
+$api_channels_request->history("C123456", "now", 0, 0, 100, 0);
+$api_channels_request->info("C123456");
+$api_channels_request->invite("C123456", "U56789");
+$api_channels_request->join("C123456");
+$api_channels_request->kick("C123456", "U56789");
+$api_channels_request->leave("C123456");
+$api_channels_request->list(0);
+$api_channels_request->mark("C123456", time());
+$api_channels_request->rename("C123456", "New name");
+$api_channels_request->replies("C123456", time());
+$api_channels_request->setPurpose("C123456", "New purpose");
+$api_channels_request->setTopic("C123456", "New topic");
+$api_channels_request->unarchive("C123456");
 ```
 
 

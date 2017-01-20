@@ -501,9 +501,6 @@ class Channels extends AbstractApi
         if (!is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (!is_string($thread_ts)) {
-            throw new InvalidArgumentException("The type of the thread_ts variable is not valid.");
-        }
 
         // Set the arguments of the request
         $arguments = array(
