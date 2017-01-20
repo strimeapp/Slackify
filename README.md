@@ -15,11 +15,13 @@ The recommended way to install Slackify is through [Composer](https://getcompose
 $ composer require strimeapp/slackify
 ```
 
-## Basic Usage
+## Webhooks
 
-For now, Slackify allows you to easily send messages to webhooks.
+Slackify allows you to easily send messages to webhooks.
 
 ```php
+use Strime\Slackify\Webhooks\Webhook;
+
 $webhook = new Webhook("https://hooks.slack.com/services/YOUR/WEBHOOK");
 
 $webhook->sendMessage(array(
@@ -40,6 +42,8 @@ The `link_text` parameter is the text that will be clickable, if you set the `li
 If you want to send attachments allong to your message, you can do it like this, before sending the message:
 
 ```php
+use Strime\Slackify\Webhooks\Webhook;
+
 $webhook = new Webhook("https://hooks.slack.com/services/YOUR/WEBHOOK");
 
 $webhook->setAttachments(
@@ -83,3 +87,51 @@ $webhook->sendMessage(array(
 - *footer*: Add some brief text to help contextualize and identify an attachment. Limited to 300 characters, and may be truncated further when displayed to users in environments with limited screen real estate.
 - *footer_icon*: To render a small icon beside your footer text, provide a publicly accessible URL string in the `footer_icon` field. You must also provide a `footer` for the field to be recognized. We'll render what you provide at 16px by 16px. It's best to use an image that is similarly sized.
 - *ts*: By providing the ts field with an integer value in "[epoch time](https://en.wikipedia.org/wiki/Unix_time)", the attachment will display an additional timestamp value as part of the attachment's footer.
+
+## API
+
+Slackify also allows you to easily send requests to the API.
+
+In order to instantiate a connection to the API, you will need a token. You can generate test tokens [here](https://api.slack.com/docs/oauth-test-tokens).
+
+Each section of the [API documentation](https://api.slack.com/methods) has its own class with the corresponding methods.
+
+```php
+use Strime\Slackify\Api\Api;
+use Strime\Slackify\Api\Auth;
+use Strime\Slackify\Api\Bots;
+use Strime\Slackify\Api\Channels;
+
+// API request
+$api_request = new Api("your-api-token-comes-here");
+$api_request->test();
+
+// Auth requests
+$api_auth_request = new Auth("your-api-token-comes-here");
+$api_auth_request->revoke("a-token-to-revoke", TRUE);
+$api_auth_request->test("a-token-to-test");
+
+// Bots requests
+$api_bots_request = new Bots("your-api-token-comes-here");
+$api_bots_request->info("B123456");
+
+// Channels requests
+$api_channels_request = new Channels("your-api-token-comes-here");
+$api_channels_request->archive("C123456");
+$api_channels_request->create("C123456");
+$api_channels_request->history("C123456", "now", 0, 0, 100, 0);
+$api_channels_request->info("C123456");
+$api_channels_request->invite("C123456", "U56789");
+$api_channels_request->join("C123456");
+$api_channels_request->kick("C123456", "U56789");
+$api_channels_request->leave("C123456");
+$api_channels_request->list(0);
+$api_channels_request->mark("C123456", time());
+$api_channels_request->rename("C123456", "New name");
+$api_channels_request->replies("C123456", time());
+$api_channels_request->setPurpose("C123456", "New purpose");
+$api_channels_request->setTopic("C123456", "New topic");
+$api_channels_request->unarchive("C123456");
+```
+
+

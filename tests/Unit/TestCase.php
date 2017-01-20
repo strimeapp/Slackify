@@ -19,7 +19,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         return $this->getMock('Doctrine\Common\Cache\Cache');
     }
 
-    public function getWebhookMock($url = null)
+    public function getWebhookMock($url)
     {
         $webhook = $this->getMockBuilder('Strime\Slackify\Webhooks\Webhook')
             ->disableOriginalConstructor()
@@ -30,5 +30,57 @@ class TestCase extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($url));
 
         return $webhook;
+    }
+
+    public function getApiMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Api')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
+
+    public function getApiAuthMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Auth')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
+
+    public function getApiBotsMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Bots')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
+
+    public function getApiChannelsMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Channels')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
     }
 }

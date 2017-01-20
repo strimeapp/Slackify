@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Strime\Slackify\Webhooks;
+namespace Strime\Slackify\Api;
 
-abstract class AbstractSlashCommand implements WebhooksInterface
+interface ApiInterface
 {
     
 }

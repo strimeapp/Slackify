@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- SlashCommand class to send slash commands to webhooks.
+- API interface to send requests to the API
 
 ### Changed
 
