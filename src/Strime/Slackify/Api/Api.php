@@ -51,9 +51,7 @@ class Api extends AbstractApi
         // Send the request
         try {
             $client = new \GuzzleHttp\Client();
-            $json_response = $client->request('GET', $this->url, [
-                'http_errors' => false
-            ]);
+            $json_response = $client->request('GET', $this->url, []);
             $response = json_decode( $json_response->getBody() );
         }
         catch (RequestException $e) {
