@@ -14,11 +14,11 @@ class AuthTest extends AbstractApiTestCase
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
             ->method('revoke')
-            ->with(1, "foo")
+            ->with("foo")
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->revoke(1, "foo");
+        $api->revoke("foo");
     }
     
     public function testRevokeRequestShouldReturnApiObject()
@@ -27,24 +27,9 @@ class AuthTest extends AbstractApiTestCase
 
         $api->expects($this->once())
             ->method('revoke')
-            ->with('dummy-token')
             ->will($this->returnValue($api));
 
-        $api->revoke('dummy-token');
-    }
-
-    public function testTestWithWrongParametersReturnException()
-    {
-        $api = $this->getApiAuthMock('api-token');
-
-        $failure = new InvalidArgumentException('Failed to send the message.');
-        $api->expects($this->once())
-            ->method('test')
-            ->with(array())
-            ->will($this->throwException($failure));
-
-        $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->test(array());
+        $api->revoke();
     }
     
     public function testTestRequestShouldReturnApiObject()
@@ -53,9 +38,8 @@ class AuthTest extends AbstractApiTestCase
 
         $api->expects($this->once())
             ->method('test')
-            ->with('dummy-token')
             ->will($this->returnValue($api));
 
-        $api->test('dummy-token');
+        $api->test();
     }
 }
