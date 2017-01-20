@@ -15,11 +15,13 @@ The recommended way to install Slackify is through [Composer](https://getcompose
 $ composer require strimeapp/slackify
 ```
 
-## Basic Usage
+## Webhooks
 
-For now, Slackify allows you to easily send messages to webhooks.
+Slackify allows you to easily send messages to webhooks.
 
 ```php
+use Strime\Slackify\Webhooks\Webhook;
+
 $webhook = new Webhook("https://hooks.slack.com/services/YOUR/WEBHOOK");
 
 $webhook->sendMessage(array(
@@ -40,6 +42,8 @@ The `link_text` parameter is the text that will be clickable, if you set the `li
 If you want to send attachments allong to your message, you can do it like this, before sending the message:
 
 ```php
+use Strime\Slackify\Webhooks\Webhook;
+
 $webhook = new Webhook("https://hooks.slack.com/services/YOUR/WEBHOOK");
 
 $webhook->setAttachments(
@@ -83,3 +87,17 @@ $webhook->sendMessage(array(
 - *footer*: Add some brief text to help contextualize and identify an attachment. Limited to 300 characters, and may be truncated further when displayed to users in environments with limited screen real estate.
 - *footer_icon*: To render a small icon beside your footer text, provide a publicly accessible URL string in the `footer_icon` field. You must also provide a `footer` for the field to be recognized. We'll render what you provide at 16px by 16px. It's best to use an image that is similarly sized.
 - *ts*: By providing the ts field with an integer value in "[epoch time](https://en.wikipedia.org/wiki/Unix_time)", the attachment will display an additional timestamp value as part of the attachment's footer.
+
+## API
+
+Slackify also allows you to easily send requests to the API.
+
+```php
+use Strime\Slackify\Api\Api;
+
+$api_request = new Api("your-api-token-comes-here");
+
+$api_request->test();
+```
+
+
