@@ -99,6 +99,7 @@ Each section of the [API documentation](https://api.slack.com/methods) has its o
 ```php
 use Strime\Slackify\Api\Api;
 use Strime\Slackify\Api\Auth;
+use Strime\Slackify\Api\Bots;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -108,6 +109,10 @@ $api_request->test();
 $api_auth_request = new Auth("your-api-token-comes-here");
 $api_auth_request->revoke("a-token-to-revoke", TRUE);
 $api_auth_request->test("a-token-to-test");
+
+// Bots requests
+$api_bots_request = new Bots("your-api-token-comes-here");
+$api_bots_request->info("B123456");
 ```
 
 
