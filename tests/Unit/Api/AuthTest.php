@@ -7,7 +7,7 @@ use Strime\Slackify\Exception\InvalidArgumentException;
 
 class AuthTest extends AbstractApiTestCase
 {
-    public function testRevokeWithWrongParametersReturnException()
+    public function testRevokeWithWrongParametersReturnsException()
     {
         $api = $this->getApiAuthMock('api-token');
 

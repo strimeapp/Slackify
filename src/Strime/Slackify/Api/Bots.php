@@ -26,7 +26,7 @@ class Bots extends AbstractApi
     public function info($bot = NULL) {
 
         // Check if the type of the variables is valid.
-        if (($bot != NULL) && !is_string($bot)) {
+        if (!is_string($bot)) {
             throw new InvalidArgumentException("The type of the bot variable is not valid.");
         }
 

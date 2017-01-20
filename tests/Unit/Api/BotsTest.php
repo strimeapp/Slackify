@@ -7,7 +7,7 @@ use Strime\Slackify\Exception\InvalidArgumentException;
 
 class BotsTest extends AbstractApiTestCase
 {
-    public function testInfoWithWrongParametersReturnException()
+    public function testInfoWithWrongParametersReturnsException()
     {
         $api = $this->getApiBotsMock('api-token');
 
