@@ -34,14 +34,27 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     public function getApiMock($token = null)
     {
-        $webhook = $this->getMockBuilder('Strime\Slackify\Api\Api')
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Api')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $webhook->expects($this->any())
+        $api->expects($this->any())
             ->method('getToken')
             ->will($this->returnValue($token));
 
-        return $webhook;
+        return $api;
+    }
+
+    public function getApiAuthMock($token = null)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Auth')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
     }
 }
