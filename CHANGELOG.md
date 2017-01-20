@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [Unreleased]
 ------------
 
+### Added
+
+- API interface to send requests to the API
+
+### Changed
+
 [0.1.2] - 2017-01-19
 --------------------
 
