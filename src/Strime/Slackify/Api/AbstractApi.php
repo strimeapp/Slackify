@@ -13,7 +13,7 @@ namespace Strime\Slackify\Api;
 
 abstract class AbstractApi implements ApiInterface
 {
-	const SLACK_API_URL = "https://slack.com/api/METHOD";
+    const SLACK_API_URL = "https://slack.com/api/";
 
 
     /** @var string */
@@ -50,12 +50,16 @@ abstract class AbstractApi implements ApiInterface
     }
 
     /**
+     * @param string $method
      * @param array $arguments
      *
      * @return ApiInterface
      */
-    private function setUrl($arguments) {
+    public function setUrl($method, $arguments) {
 
+        if (!is_string($method)) {
+            throw new InvalidArgumentException('The method variable must be a string.');
+        }
         if (!is_array($arguments)) {
             throw new InvalidArgumentException('The arguments variable must be an array.');
         }
@@ -64,12 +68,19 @@ abstract class AbstractApi implements ApiInterface
         $arguments_list = array();
 
         foreach ($arguments as $key => $value) {
-        	$arguments_list[] = $key . "=" . $value;
+            $arguments_list[] = $key . "=" . $value;
         }
 
-        $this->url = self::SLACK_API_URL . "?" . implode("&", $arguments_list);
+        $this->url = self::SLACK_API_URL . $method . "?" . implode("&", $arguments_list);
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl() {
+        return $this->url;
     }
     
 }

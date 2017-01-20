@@ -29,10 +29,10 @@ class Api extends AbstractApi
     public function test($error = NULL, $foo = NULL) {
 
         // Check if the type of the variables is valid.
-        if (!is_string($error)) {
+        if (($error != NULL) && !is_string($error)) {
             throw new InvalidArgumentException("The type of the error variable is not valid.");
         }
-        if (!is_string($error)) {
+        if (($error != NULL) && !is_string($foo)) {
             throw new InvalidArgumentException("The type of the error variable is not valid.");
         }
 
@@ -46,12 +46,12 @@ class Api extends AbstractApi
             $arguments["foo"] = $foo;
         }
 
-        $this->setUrl($arguments);
+        $this->setUrl("api.test", $arguments);
 
         // Send the request
         try {
             $client = new \GuzzleHttp\Client();
-            $json_response = $client->request('GET', $this->url, []);
+            $json_response = $client->request('GET', $this->getUrl(), []);
             $response = json_decode( $json_response->getBody() );
         }
         catch (RequestException $e) {
@@ -59,7 +59,7 @@ class Api extends AbstractApi
         }
 
         if($response->{'ok'} === FALSE) {
-            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.". Arguments: ".json_encode($response->{'args'}));
+            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
         return $this;
