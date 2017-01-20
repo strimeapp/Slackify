@@ -44,7 +44,7 @@ class Webhook extends AbstractWebhook
     /**
      * @param string $url
      *
-     * @return WebhooksInterface
+     * @return Webhook
      */
     public function setUrl($url) {
 
