@@ -18,6 +18,8 @@ abstract class AbstractApi implements ApiInterface
 
     /** @var string */
     protected $token;
+    /** @var string */
+    public $url;
 
 
     public function __construct($token) {
@@ -55,20 +57,22 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return ApiInterface
      */
-    public function setUrl($method, $arguments) {
+    public function setUrl($method, $arguments = NULL) {
 
         if (!is_string($method)) {
             throw new InvalidArgumentException('The method variable must be a string.');
         }
-        if (!is_array($arguments)) {
+        if (($arguments != NULL) && !is_array($arguments)) {
             throw new InvalidArgumentException('The arguments variable must be an array.');
         }
 
         // Set a new array
         $arguments_list = array();
 
-        foreach ($arguments as $key => $value) {
-            $arguments_list[] = $key . "=" . $value;
+        if ($arguments != NULL) {
+            foreach ($arguments as $key => $value) {
+                $arguments_list[] = $key . "=" . $value;
+            }
         }
 
         $this->url = self::SLACK_API_URL . $method . "?" . implode("&", $arguments_list);
