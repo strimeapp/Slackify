@@ -101,6 +101,7 @@ use Strime\Slackify\Api\Api;
 use Strime\Slackify\Api\Auth;
 use Strime\Slackify\Api\Bots;
 use Strime\Slackify\Api\Channels;
+use Strime\Slackify\Api\Chat;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -132,6 +133,13 @@ $api_channels_request->replies("C123456", time());
 $api_channels_request->setPurpose("C123456", "New purpose");
 $api_channels_request->setTopic("C123456", "New topic");
 $api_channels_request->unarchive("C123456");
+
+// Chat requests
+$api_chat_request = new Chat("your-api-token-comes-here");
+$api_chat_request->delete((string)time(), "C12345");
+$api_chat_request->meMessage("C12345", "foo bar");
+$api_chat_request->postMessage("C12345", "foo bar", "full", 0);
+$api_chat_request->update((string)time(), "C12345", "foo bar");
 ```
 
 
