@@ -23,7 +23,7 @@ class Chat extends AbstractApi
      * @param  string $ts
      * @param  string $channel
      * @param  string $as_user
-     * @return Bots
+     * @return Chat
      */
     public function delete($ts, $channel, $as_user = NULL) {
 
@@ -74,7 +74,7 @@ class Chat extends AbstractApi
      *
      * @param  string $channel
      * @param  string $text
-     * @return Bots
+     * @return Chat
      */
     public function meMessage($channel, $text) {
 
@@ -129,7 +129,7 @@ class Chat extends AbstractApi
      * @param  string $icon_emoji
      * @param  string $thread_ts
      * @param  string $reply_broadcast
-     * @return Bots
+     * @return Chat
      */
     public function postMessage($channel, $text, $parse = "none", $link_names = 1, $attachments = NULL, 
         $unfurl_links = TRUE, $unfurl_media = FALSE, $username = NULL, $as_user = TRUE, $icon_url = NULL,
@@ -235,7 +235,7 @@ class Chat extends AbstractApi
      * @param  string $parse
      * @param  integer $link_names
      * @param  bool $as_user
-     * @return Bots
+     * @return Chat
      */
     public function update($ts, $channel, $text, $attachments = NULL, $parse = "none", $link_names = 1, $as_user = TRUE) {
 
