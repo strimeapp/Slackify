@@ -23,7 +23,7 @@ class FilesComments extends AbstractApi
      * @param  string $file
      * @param  string $comment
      * @param  string $channel
-     * @return Dnd
+     * @return FilesComments
      */
     public function add($file, $comment, $channel = NULL) {
 
@@ -73,7 +73,7 @@ class FilesComments extends AbstractApi
      *
      * @param  string $file
      * @param  string $id
-     * @return Dnd
+     * @return FilesComments
      */
     public function delete($file, $id) {
 
@@ -117,7 +117,7 @@ class FilesComments extends AbstractApi
      * @param  string $file
      * @param  string $id
      * @param  string $comment
-     * @return Dnd
+     * @return FilesComments
      */
     public function edit($file, $id, $comment) {
 
