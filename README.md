@@ -102,6 +102,7 @@ use Strime\Slackify\Api\Auth;
 use Strime\Slackify\Api\Bots;
 use Strime\Slackify\Api\Channels;
 use Strime\Slackify\Api\Chat;
+use Strime\Slackify\Api\Dnd;
 use Strime\Slackify\Api\Emoji;
 
 // API request
@@ -141,6 +142,14 @@ $api_chat_request->delete((string)time(), "C12345");
 $api_chat_request->meMessage("C12345", "foo bar");
 $api_chat_request->postMessage("C12345", "foo bar", "full", 0);
 $api_chat_request->update((string)time(), "C12345", "foo bar");
+
+// Dnd requests
+$api_dnd_request = new Dnd("your-api-token-comes-here");
+$api_dnd_request->endDnd();
+$api_dnd_request->endSnooze();
+$api_dnd_request->info("U12345");
+$api_dnd_request->setSnooze(10);
+$api_dnd_request->teamInfo("U12345,U67890");
 
 // Emoji requests
 $api_emoji_request = new Emoji("your-api-token-comes-here");

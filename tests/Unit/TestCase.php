@@ -97,6 +97,19 @@ class TestCase extends \PHPUnit_Framework_TestCase
         return $api;
     }
 
+    public function getApiDndMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Dnd')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
+
     public function getApiEmojiMock($token)
     {
         $api = $this->getMockBuilder('Strime\Slackify\Api\Emoji')
