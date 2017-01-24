@@ -161,6 +161,15 @@ $api_files_comments_request = new FilesComments("your-api-token-comes-here");
 $api_files_comments_request->add("F12345", "Foo bar", "U12345");
 $api_files_comments_request->delete("F12345", "Fc12345");
 $api_files_comments_request->edit("F12345", "Fc12345", "Foo bar");
+
+// Files requests
+$api_files_request = new Files("your-api-token-comes-here");
+$api_files_request->delete("F12345");
+$api_files_request->info("F12345", 100, 1);
+$api_files_request->list("U12345", "C12345", "now", "all", "all", 100, 1);
+$api_files_request->revokePublicURL("F12345");
+$api_files_request->sharedPublicURL("F12345");
+$api_files_request->upload("test.txt", "/path/to/file", "text", "A title", "A comment", "C12345,C67890");
 ```
 
 

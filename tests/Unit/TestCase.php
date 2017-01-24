@@ -135,4 +135,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         return $api;
     }
+
+    public function getApiFilesMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Files')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
 }
