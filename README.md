@@ -104,6 +104,7 @@ use Strime\Slackify\Api\Channels;
 use Strime\Slackify\Api\Chat;
 use Strime\Slackify\Api\Dnd;
 use Strime\Slackify\Api\Emoji;
+use Strime\Slackify\Api\FilesComments;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -154,6 +155,12 @@ $api_dnd_request->teamInfo("U12345,U67890");
 // Emoji requests
 $api_emoji_request = new Emoji("your-api-token-comes-here");
 $api_emoji_request->list();
+
+// FilesComments requests
+$api_files_comments_request = new FilesComments("your-api-token-comes-here");
+$api_files_comments_request->add("F12345", "Foo bar", "U12345");
+$api_files_comments_request->delete("F12345", "Fc12345");
+$api_files_comments_request->edit("F12345", "Fc12345", "Foo bar");
 ```
 
 
