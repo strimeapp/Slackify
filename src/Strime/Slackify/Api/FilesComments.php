@@ -15,121 +15,40 @@ use Strime\Slackify\Exception\RuntimeException;
 use Strime\Slackify\Exception\InvalidArgumentException;
 use GuzzleHttp\Exception\RequestException;
 
-class Dnd extends AbstractApi
+class FilesComments extends AbstractApi
 {
     /**
      * {@inheritdoc}
      *
+     * @param  string $file
+     * @param  string $comment
+     * @param  string $channel
      * @return Dnd
      */
-    public function endDnd() {
-
-        $this->setUrl("dnd.endDnd");
-
-        // Send the request
-        try {
-            $client = new \GuzzleHttp\Client();
-            $json_response = $client->request('GET', $this->getUrl(), []);
-            $response = json_decode( $json_response->getBody() );
-        }
-        catch (RequestException $e) {
-            throw new RuntimeException('The request to the API failed: '.$e->getMessage(), $e->getCode(), $e);
-        }
-
-        if($response->{'ok'} === FALSE) {
-            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return Dnd
-     */
-    public function endSnooze() {
-
-        $this->setUrl("dnd.endSnooze");
-
-        // Send the request
-        try {
-            $client = new \GuzzleHttp\Client();
-            $json_response = $client->request('GET', $this->getUrl(), []);
-            $response = json_decode( $json_response->getBody() );
-        }
-        catch (RequestException $e) {
-            throw new RuntimeException('The request to the API failed: '.$e->getMessage(), $e->getCode(), $e);
-        }
-
-        if($response->{'ok'} === FALSE) {
-            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * {@inheritdoc}
-     *
-     * @param  string $user
-     * @return Dnd
-     */
-    public function info($user = NULL) {
+    public function add($file, $comment, $channel = NULL) {
 
         // Check if the type of the variables is valid.
-        if (($user != NULL) && !is_string($user)) {
-            throw new InvalidArgumentException("The type of the user variable is not valid.");
+        if (!is_string($file)) {
+            throw new InvalidArgumentException("The type of the file variable is not valid.");
         }
-
-        // Set the arguments of the request
-        $arguments = array();
-
-        if($user != NULL) {
-            $arguments["user"] = $user;
+        if (!is_string($comment)) {
+            throw new InvalidArgumentException("The type of the comment variable is not valid.");
         }
-
-        $this->setUrl("dnd.info", $arguments);
-
-        // Send the request
-        try {
-            $client = new \GuzzleHttp\Client();
-            $json_response = $client->request('GET', $this->getUrl(), []);
-            $response = json_decode( $json_response->getBody() );
-        }
-        catch (RequestException $e) {
-            throw new RuntimeException('The request to the API failed: '.$e->getMessage(), $e->getCode(), $e);
-        }
-
-        if($response->{'ok'} === FALSE) {
-            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * {@inheritdoc}
-     *
-     * @param  integer $num_minutes
-     * @return Dnd
-     */
-    public function setSnooze($num_minutes) {
-
-        // Check if the type of the variables is valid.
-        if (!is_integer($num_minutes)) {
-            throw new InvalidArgumentException("The type of the num_minutes variable is not valid.");
+        if (($channel != NULL) && !is_string($channel)) {
+            throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
 
         // Set the arguments of the request
         $arguments = array(
-            "num_minutes" => $num_minutes
+            "file" => $file,
+            "comment" => $comment
         );
 
-        $this->setUrl("dnd.setSnooze", $arguments);
+        if($channel != NULL) {
+            $arguments["channel"] = $channel;
+        }
+
+        $this->setUrl("files.comments.add", $arguments);
 
         // Send the request
         try {
@@ -152,24 +71,75 @@ class Dnd extends AbstractApi
     /**
      * {@inheritdoc}
      *
-     * @param  string $users
+     * @param  string $file
+     * @param  string $id
      * @return Dnd
      */
-    public function teamInfo($users = NULL) {
+    public function delete($file, $id) {
 
         // Check if the type of the variables is valid.
-        if (($user != NULL) && !is_string($user)) {
-            throw new InvalidArgumentException("The type of the users variable is not valid.");
+        if (!is_string($file)) {
+            throw new InvalidArgumentException("The type of the file variable is not valid.");
+        }
+        if (!is_string($id)) {
+            throw new InvalidArgumentException("The type of the id variable is not valid.");
         }
 
         // Set the arguments of the request
-        $arguments = array();
+        $arguments = array(
+            "file" => $file,
+            "id" => $id
+        );
 
-        if($user != NULL) {
-            $arguments["users"] = $users;
+        $this->setUrl("files.comments.delete", $arguments);
+
+        // Send the request
+        try {
+            $client = new \GuzzleHttp\Client();
+            $json_response = $client->request('GET', $this->getUrl(), []);
+            $response = json_decode( $json_response->getBody() );
+        }
+        catch (RequestException $e) {
+            throw new RuntimeException('The request to the API failed: '.$e->getMessage(), $e->getCode(), $e);
         }
 
-        $this->setUrl("dnd.teamInfo", $arguments);
+        if($response->{'ok'} === FALSE) {
+            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param  string $file
+     * @param  string $id
+     * @param  string $comment
+     * @return Dnd
+     */
+    public function edit($file, $id, $comment) {
+
+        // Check if the type of the variables is valid.
+        if (!is_string($file)) {
+            throw new InvalidArgumentException("The type of the file variable is not valid.");
+        }
+        if (!is_string($id)) {
+            throw new InvalidArgumentException("The type of the id variable is not valid.");
+        }
+        if (!is_string($comment)) {
+            throw new InvalidArgumentException("The type of the comment variable is not valid.");
+        }
+
+        // Set the arguments of the request
+        $arguments = array(
+            "file" => $file,
+            "id" => $id,
+            "comment" => $comment
+        );
+
+        $this->setUrl("files.comments.edit", $arguments);
 
         // Send the request
         try {
