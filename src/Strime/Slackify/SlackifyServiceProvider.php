@@ -11,7 +11,6 @@
 
 namespace Strime\Slackify;
 
-use Doctrine\Common\Cache\ArrayCache;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 

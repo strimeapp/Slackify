@@ -2,7 +2,6 @@
 
 namespace Tests\Strime\Slackify\Unit\Webhooks;
 
-use Strime\Slackify\Webhooks\Webhook;
 use Strime\Slackify\Exception\InvalidArgumentException;
 
 class WebhookTest extends AbstractWebhookTestCase
