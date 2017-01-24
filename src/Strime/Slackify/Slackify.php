@@ -11,10 +11,6 @@
 
 namespace Strime\Slackify;
 
-use Strime\Slackify\Exception\InvalidArgumentException;
-use Strime\Slackify\Exception\RuntimeException;
-use Psr\Log\LoggerInterface;
-
 class Slackify
 {
 
