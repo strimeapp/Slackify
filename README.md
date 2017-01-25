@@ -104,7 +104,9 @@ use Strime\Slackify\Api\Channels;
 use Strime\Slackify\Api\Chat;
 use Strime\Slackify\Api\Dnd;
 use Strime\Slackify\Api\Emoji;
+use Strime\Slackify\Api\Files;
 use Strime\Slackify\Api\FilesComments;
+use Strime\Slackify\Api\Im;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -170,6 +172,35 @@ $api_files_request->list("U12345", "C12345", "now", "all", "all", 100, 1);
 $api_files_request->revokePublicURL("F12345");
 $api_files_request->sharedPublicURL("F12345");
 $api_files_request->upload("test.txt", "/path/to/file", "text", "A title", "A comment", "C12345,C67890");
+
+// Groups requests
+$api_groups_request = new Groups("your-api-token-comes-here");
+$api_groups_request->archive("G12345");
+$api_groups_request->close("G12345");
+$api_groups_request->create("Foo bar");
+$api_groups_request->createChild("G12345");
+$api_groups_request->history("G12345", "now", "0", 0, 100, 1);
+$api_groups_request->info("G12345");
+$api_groups_request->invite("G12345", "U12345");
+$api_groups_request->kick("G12345", "U12345");
+$api_groups_request->leave("G12345");
+$api_groups_request->list(1);
+$api_groups_request->mark("G12345", (string)time());
+$api_groups_request->open("G12345");
+$api_groups_request->rename("G12345", "Foo bar");
+$api_groups_request->replies("C12345", (string)time());
+$api_groups_request->setPurpose("G12345", "Foo bar");
+$api_groups_request->setTopic("G12345", "Foo bar");
+$api_groups_request->unarchive("G12345");
+
+// Im requests
+$api_im_request = new Im("your-api-token-comes-here");
+$api_im_request->close("D12345");
+$api_im_request->history("G12345", "now", "0", 0, 100, 1);
+$api_im_request->list();
+$api_im_request->mark("D12345", (string)time());
+$api_im_request->open("U12345", TRUE);
+$api_im_request->replies("D12345", (string)time());
 ```
 
 
