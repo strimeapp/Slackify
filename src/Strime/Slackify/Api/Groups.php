@@ -197,7 +197,12 @@ class Groups extends AbstractApi
 
         // Set the arguments of the request
         $arguments = array(
-            "channel" => $channel
+            "channel" => $channel,
+            "latest" => $latest,
+            "oldest" => $oldest,
+            "inclusive" => (string)$inclusive,
+            "count" => (string)$count,
+            "unreads" => (string)$unreads
         );
 
         $this->setUrl("groups.history", $arguments);
