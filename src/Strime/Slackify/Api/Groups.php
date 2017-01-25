@@ -194,6 +194,21 @@ class Groups extends AbstractApi
         if (!is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
+        if (!is_string($latest)) {
+            throw new InvalidArgumentException("The type of the latest variable is not valid.");
+        }
+        if (!is_string($oldest)) {
+            throw new InvalidArgumentException("The type of the oldest variable is not valid.");
+        }
+        if (!is_integer($inclusive)) {
+            throw new InvalidArgumentException("The type of the inclusive variable is not valid.");
+        }
+        if (!is_integer($count)) {
+            throw new InvalidArgumentException("The type of the count variable is not valid.");
+        }
+        if (!is_integer($unreads)) {
+            throw new InvalidArgumentException("The type of the unreads variable is not valid.");
+        }
 
         // Set the arguments of the request
         $arguments = array(
