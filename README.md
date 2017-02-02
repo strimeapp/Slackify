@@ -112,6 +112,7 @@ use Strime\Slackify\Api\Oauth;
 use Strime\Slackify\Api\Pin;
 use Strime\Slackify\Api\Reactions;
 use Strime\Slackify\Api\Reminders;
+use Strime\Slackify\Api\Rtm;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -240,6 +241,10 @@ $api_reminders_request->complete("Rm12345");
 $api_reminders_request->delete("Rm12345");
 $api_reminders_request->info("Rm12345");
 $api_reminders_request->list();
+
+// Rtm requests
+$api_rtm_request = new Rtm("your-api-token-comes-here");
+$api_rtm_request->access(TRUE, FALSE, TRUE);
 ```
 
 
