@@ -174,4 +174,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         return $api;
     }
+
+    public function getApiMpimMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Mpim')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
 }

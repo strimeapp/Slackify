@@ -23,8 +23,12 @@ class ApiTest extends AbstractApiTestCase
     
     public function testTestRequestShouldReturnApiObject()
     {
-        $api = new Api('api-token');
+        $api = $this->getApiMock('api-token');
 
+        $api->expects($this->once())
+            ->method('test')
+            ->will($this->returnValue($api));
+            
         $result = $api->test();
         $this->assertInstanceOf('Strime\Slackify\Api\Api', $result);
     }

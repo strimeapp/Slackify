@@ -30,8 +30,8 @@ class Api extends AbstractApi
         if (($error != NULL) && !is_string($error)) {
             throw new InvalidArgumentException("The type of the error variable is not valid.");
         }
-        if (($error != NULL) && !is_string($foo)) {
-            throw new InvalidArgumentException("The type of the error variable is not valid.");
+        if (($foo != NULL) && !is_string($foo)) {
+            throw new InvalidArgumentException("The type of the foo variable is not valid.");
         }
 
         // Set the arguments of the request
