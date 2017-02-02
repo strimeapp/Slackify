@@ -51,7 +51,7 @@ class Rtm extends AbstractApi
             $arguments["mpim_aware"] = $mpim_aware;
         }
 
-        $this->setUrl("reminders.add", $arguments);
+        $this->setUrl("rtm.start", $arguments);
 
         // Send the request
         try {
