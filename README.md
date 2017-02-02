@@ -111,6 +111,7 @@ use Strime\Slackify\Api\Mpim;
 use Strime\Slackify\Api\Oauth;
 use Strime\Slackify\Api\Pin;
 use Strime\Slackify\Api\Reactions;
+use Strime\Slackify\Api\Reminders;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -221,9 +222,9 @@ $api_oauth_request->access("client_id", "client_secret", "code", "https://www.fo
 
 // Pin requests
 $api_pin_request = new Pin("your-api-token-comes-here");
-$api_pin_request->add("C12345", "F12345", "Fc12345", time());
+$api_pin_request->add("C12345", "F12345", "Fc12345", (string)time());
 $api_pin_request->list("C12345");
-$api_pin_request->remove("C12345", "F12345", "Fc12345", time());
+$api_pin_request->remove("C12345", "F12345", "Fc12345", (string)time());
 
 // Reactions requests
 $api_reactions_request = new Reactions("your-api-token-comes-here");
@@ -231,6 +232,14 @@ $api_reactions_request->add("F12345", "Fc12345", "C12345", time());
 $api_reactions_request->get("F12345", "Fc12345", "C12345");
 $api_reactions_request->list("U12345", TRUE);
 $api_reactions_request->remove("F12345", "Fc12345", "C12345", time());
+
+// Reminders requests
+$api_reminders_request = new Reminders("your-api-token-comes-here");
+$api_reminders_request->add("Foo", (string)time(), "U12345");
+$api_reminders_request->complete("Rm12345");
+$api_reminders_request->delete("Rm12345");
+$api_reminders_request->info("Rm12345");
+$api_reminders_request->list();
 ```
 
 
