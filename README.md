@@ -109,6 +109,7 @@ use Strime\Slackify\Api\FilesComments;
 use Strime\Slackify\Api\Im;
 use Strime\Slackify\Api\Mpim;
 use Strime\Slackify\Api\Oauth;
+use Strime\Slackify\Api\Pin;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -214,8 +215,14 @@ $api_mpim_request->open("U12345,U67890", TRUE);
 $api_mpim_request->replies("D12345", (string)time());
 
 // Oauth requests
-$api_oauth_request = new Mpim("your-api-token-comes-here");
+$api_oauth_request = new Oauth("your-api-token-comes-here");
 $api_oauth_request->access("client_id", "client_secret", "code", "https://www.foo.com");
+
+// Pin requests
+$api_pin_request = new Pin("your-api-token-comes-here");
+$api_pin_request->add("C12345", "F12345", "Fc12345", time());
+$api_pin_request->list("C12345");
+$api_pin_request->remove("C12345", "F12345", "Fc12345", time());
 ```
 
 

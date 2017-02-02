@@ -66,7 +66,7 @@ class Im extends AbstractApi
      * @param  integer $inclusive
      * @param  integer $count
      * @param  integer $unreads
-     * @return Groups
+     * @return Im
      */
     public function history($channel, $latest = "now", $oldest = "0", $inclusive = 0, $count = 100, $unreads = 0) {
 
@@ -125,7 +125,7 @@ class Im extends AbstractApi
     /**
      * {@inheritdoc}
      *
-     * @return Groups
+     * @return Im
      */
     public function list() {
 
