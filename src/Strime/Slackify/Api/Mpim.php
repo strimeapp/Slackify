@@ -21,7 +21,7 @@ class Mpim extends AbstractApi
      * {@inheritdoc}
      *
      * @param  string $channel
-     * @return Im
+     * @return Mpim
      */
     public function close($channel) {
 
@@ -156,7 +156,7 @@ class Mpim extends AbstractApi
      *
      * @param  string $channel
      * @param  string $ts
-     * @return Im
+     * @return Mpim
      */
     public function mark($channel, $ts) {
 
@@ -201,7 +201,7 @@ class Mpim extends AbstractApi
      *
      * @param  string $users
      * @param  boolean $return_im
-     * @return Im
+     * @return Mpim
      */
     public function open($users, $return_im = NULL) {
 
@@ -252,7 +252,7 @@ class Mpim extends AbstractApi
      *
      * @param  string $channel
      * @param  string $thread_ts
-     * @return Im
+     * @return Mpim
      */
     public function replies($channel, $thread_ts) {
 

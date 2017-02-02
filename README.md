@@ -107,6 +107,7 @@ use Strime\Slackify\Api\Emoji;
 use Strime\Slackify\Api\Files;
 use Strime\Slackify\Api\FilesComments;
 use Strime\Slackify\Api\Im;
+use Strime\Slackify\Api\Mpim;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -200,6 +201,15 @@ $api_im_request->history("G12345", "now", "0", 0, 100, 1);
 $api_im_request->list();
 $api_im_request->mark("D12345", (string)time());
 $api_im_request->open("U12345", TRUE);
+$api_im_request->replies("D12345", (string)time());
+
+// Mpim requests
+$api_im_request = new Mpim("your-api-token-comes-here");
+$api_im_request->close("D12345");
+$api_im_request->history("G12345", "now", "0", 0, 100, 1);
+$api_im_request->list();
+$api_im_request->mark("D12345", (string)time());
+$api_im_request->open("U12345,U67890", TRUE);
 $api_im_request->replies("D12345", (string)time());
 ```
 
