@@ -2,7 +2,7 @@
 
 namespace Tests\Strime\Slackify\Unit\Api;
 
-use Strime\Slackify\Api\Im;
+use Strime\Slackify\Api\Mpim;
 use Strime\Slackify\Exception\InvalidArgumentException;
 use Strime\Slackify\Exception\RuntimeException;
 

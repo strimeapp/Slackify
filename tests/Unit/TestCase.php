@@ -213,4 +213,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         return $api;
     }
+
+    public function getApiReactionsMock($token)
+    {
+        $api = $this->getMockBuilder('Strime\Slackify\Api\Reactions')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $api->expects($this->any())
+            ->method('getToken')
+            ->will($this->returnValue($token));
+
+        return $api;
+    }
 }

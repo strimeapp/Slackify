@@ -110,6 +110,7 @@ use Strime\Slackify\Api\Im;
 use Strime\Slackify\Api\Mpim;
 use Strime\Slackify\Api\Oauth;
 use Strime\Slackify\Api\Pin;
+use Strime\Slackify\Api\Reactions;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
@@ -223,6 +224,13 @@ $api_pin_request = new Pin("your-api-token-comes-here");
 $api_pin_request->add("C12345", "F12345", "Fc12345", time());
 $api_pin_request->list("C12345");
 $api_pin_request->remove("C12345", "F12345", "Fc12345", time());
+
+// Reactions requests
+$api_reactions_request = new Reactions("your-api-token-comes-here");
+$api_reactions_request->add("F12345", "Fc12345", "C12345", time());
+$api_reactions_request->get("F12345", "Fc12345", "C12345");
+$api_reactions_request->list("U12345", TRUE);
+$api_reactions_request->remove("F12345", "Fc12345", "C12345", time());
 ```
 
 
