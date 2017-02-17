@@ -30,16 +30,16 @@ class Stars extends AbstractApi
 
         // Check if the type of the variables is valid.
         if (!is_string($file) && ($file != NULL)) {
-            throw new InvalidArgumentException("The type of the query variable is not valid.");
+            throw new InvalidArgumentException("The type of the file variable is not valid.");
         }
         if (!is_string($file_comment) && ($file_comment != NULL)) {
-            throw new InvalidArgumentException("The type of the sort variable is not valid.");
+            throw new InvalidArgumentException("The type of the file_comment variable is not valid.");
         }
         if (!is_string($channel) && ($channel != NULL)) {
-            throw new InvalidArgumentException("The type of the sort_dir variable is not valid.");
+            throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
         if (!is_string($timestamp) && ($timestamp != NULL)) {
-            throw new InvalidArgumentException("The type of the hightlight variable is not valid.");
+            throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
         // Set the arguments of the request
@@ -138,16 +138,16 @@ class Stars extends AbstractApi
 
         // Check if the type of the variables is valid.
         if (!is_string($file) && ($file != NULL)) {
-            throw new InvalidArgumentException("The type of the query variable is not valid.");
+            throw new InvalidArgumentException("The type of the file variable is not valid.");
         }
         if (!is_string($file_comment) && ($file_comment != NULL)) {
-            throw new InvalidArgumentException("The type of the sort variable is not valid.");
+            throw new InvalidArgumentException("The type of the file_comment variable is not valid.");
         }
         if (!is_string($channel) && ($channel != NULL)) {
-            throw new InvalidArgumentException("The type of the sort_dir variable is not valid.");
+            throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
         if (!is_string($timestamp) && ($timestamp != NULL)) {
-            throw new InvalidArgumentException("The type of the hightlight variable is not valid.");
+            throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
         // Set the arguments of the request

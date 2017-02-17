@@ -22,7 +22,7 @@ class StarsTest extends AbstractApiTestCase
         $api->add(array(), array());
     }
 
-    public function testAddRequestShouldReturnApiObject()
+    public function testAddRequestShouldReturnJsonObject()
     {
         $api = $this->getApiStarsMock('api-token');
 
@@ -55,7 +55,7 @@ class StarsTest extends AbstractApiTestCase
         $api->expects($this->once())
             ->method('list')
             ->with(14, 3)
-            ->will($this->returnValue("json"));
+            ->will($this->returnValue($api));
 
         $api->list(14, 3);
     }
@@ -74,7 +74,7 @@ class StarsTest extends AbstractApiTestCase
         $api->remove(array(), array());
     }
 
-    public function testRemoveRequestShouldReturnApiObject()
+    public function testRemoveRequestShouldReturnJsonObject()
     {
         $api = $this->getApiStarsMock('api-token');
 
