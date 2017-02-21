@@ -230,7 +230,7 @@ class Users extends AbstractApi
     /**
      * {@inheritdoc}
      *
-     * @param  multipart $image
+     * @param  string $image
      * @param  integer $crop_x
      * @param  integer $crop_y
      * @param  integer $crop_w
