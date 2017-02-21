@@ -137,4 +137,56 @@ class UserGroupsTest extends AbstractApiTestCase
 
         $api->update("Ug12345", "foo", "bar", NULL, NULL, TRUE);
     }
+
+    public function testUsersListWithWrongParametersReturnsException()
+    {
+        $api = $this->getApiUserGroupsMock('api-token');
+
+        $failure = new InvalidArgumentException('Failed to send the message.');
+        $api->expects($this->once())
+            ->method('usersList')
+            ->with(array(), array())
+            ->will($this->throwException($failure));
+
+        $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
+        $api->usersList(array(), array());
+    }
+
+    public function testUsersListRequestShouldReturnJsonObject()
+    {
+        $api = $this->getApiUserGroupsMock('api-token');
+
+        $api->expects($this->once())
+            ->method('usersList')
+            ->with("Ug12345", TRUE)
+            ->will($this->returnValue("json"));
+
+        $api->usersList("Ug12345", TRUE);
+    }
+
+    public function testUsersUpdateWithWrongParametersReturnsException()
+    {
+        $api = $this->getApiUserGroupsMock('api-token');
+
+        $failure = new InvalidArgumentException('Failed to send the message.');
+        $api->expects($this->once())
+            ->method('usersUpdate')
+            ->with(array(), array())
+            ->will($this->throwException($failure));
+
+        $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
+        $api->usersUpdate(array(), array());
+    }
+
+    public function testUsersUpdateRequestShouldReturnJsonObject()
+    {
+        $api = $this->getApiUserGroupsMock('api-token');
+
+        $api->expects($this->once())
+            ->method('usersUpdate')
+            ->with("Ug12345", "U12345,U67890", TRUE)
+            ->will($this->returnValue("json"));
+
+        $api->usersUpdate("Ug12345", "U12345,U67890", TRUE);
+    }
 }

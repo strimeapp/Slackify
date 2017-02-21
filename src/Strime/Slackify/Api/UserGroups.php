@@ -269,7 +269,7 @@ class UserGroups extends AbstractApi
             throw new InvalidArgumentException("The type of the channels variable is not valid.");
         }
         if (!is_bool($include_count) &&  ($include_count != NULL)) {
-            throw new InvalidArgumentException("The type of the channels variable is not valid.");
+            throw new InvalidArgumentException("The type of the include_count variable is not valid.");
         }
 
         // Set the arguments of the request
@@ -294,6 +294,107 @@ class UserGroups extends AbstractApi
         }
 
         $this->setUrl("usergroups.update", $arguments);
+
+        // Send the request
+        try {
+            $client = new \GuzzleHttp\Client();
+            $json_response = $client->request('GET', $this->getUrl(), []);
+            $response = json_decode( $json_response->getBody() );
+        }
+        catch (RequestException $e) {
+            throw new RuntimeException('The request to the API failed: '.$e->getMessage(), $e->getCode(), $e);
+        }
+
+        if($response->{'ok'} === FALSE) {
+            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
+        }
+
+        return $json_response->getBody();
+    }
+
+
+
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param  string $usergroup
+     * @param  bool $include_disabled
+     * @return string
+     */
+    public function usersList($usergroup, $include_disabled = NULL) {
+
+        // Check if the type of the variables is valid.
+        if (!is_string($usergroup) || ($usergroup == NULL)) {
+            throw new InvalidArgumentException("The type of the usergroup variable is not valid.");
+        }
+        if (!is_bool($include_disabled) &&  ($include_disabled != NULL)) {
+            throw new InvalidArgumentException("The type of the include_disabled variable is not valid.");
+        }
+
+        // Set the arguments of the request
+        $arguments = array(
+            "usergroup" => $usergroup
+        );
+
+        if ($include_disabled != NULL) {
+            $arguments["include_disabled"] = $include_disabled;
+        }
+
+        $this->setUrl("usergroups.users.list", $arguments);
+
+        // Send the request
+        try {
+            $client = new \GuzzleHttp\Client();
+            $json_response = $client->request('GET', $this->getUrl(), []);
+            $response = json_decode( $json_response->getBody() );
+        }
+        catch (RequestException $e) {
+            throw new RuntimeException('The request to the API failed: '.$e->getMessage(), $e->getCode(), $e);
+        }
+
+        if($response->{'ok'} === FALSE) {
+            throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
+        }
+
+        return $json_response->getBody();
+    }
+
+
+
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param  string $usergroup
+     * @param  string $users
+     * @param  bool $include_count
+     * @return string
+     */
+    public function usersUpdate($usergroup, $users, $include_disabled = NULL) {
+
+        // Check if the type of the variables is valid.
+        if (!is_string($usergroup) || ($usergroup == NULL)) {
+            throw new InvalidArgumentException("The type of the usergroup variable is not valid.");
+        }
+        if (!is_string($users) || ($users == NULL)) {
+            throw new InvalidArgumentException("The type of the users variable is not valid.");
+        }
+        if (!is_bool($include_count) &&  ($include_count != NULL)) {
+            throw new InvalidArgumentException("The type of the include_count variable is not valid.");
+        }
+
+        // Set the arguments of the request
+        $arguments = array(
+            "usergroup" => $usergroup,
+            "users" => $users
+        );
+
+        if ($include_count != NULL) {
+            $arguments["include_count"] = $include_count;
+        }
+
+        $this->setUrl("usergroups.users.update", $arguments);
 
         // Send the request
         try {
