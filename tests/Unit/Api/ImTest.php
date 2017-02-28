@@ -21,7 +21,7 @@ class ImTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->close(array());
     }
-    
+
     public function testCloseRequestShouldReturnApiObject()
     {
         $api = $this->getApiImMock('api-token');
@@ -47,26 +47,26 @@ class ImTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->history(array(), array(), array(), array());
     }
-    
-    public function testHistoryRequestShouldReturnApiObject()
+
+    public function testHistoryRequestShouldReturnJsonObject()
     {
         $api = $this->getApiImMock('api-token');
 
         $api->expects($this->once())
             ->method('history')
             ->with("G12345", (string)time(), (string)strtotime('yesterday'))
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->history("G12345", (string)time(), (string)strtotime('yesterday'));
     }
-    
-    public function testListRequestShouldReturnApiObject()
+
+    public function testListRequestShouldReturnJsonObject()
     {
         $api = $this->getApiImMock('api-token');
 
         $api->expects($this->once())
             ->method('list')
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->list();
     }
@@ -84,17 +84,17 @@ class ImTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->mark(array(), array());
     }
-    
+
     public function testMarkRequestShouldReturnApiObject()
     {
         $api = $this->getApiImMock('api-token');
 
         $api->expects($this->once())
             ->method('mark')
-            ->with("G12345", (string)time())
+            ->with("G12345", time())
             ->will($this->returnValue($api));
 
-        $api->mark("G12345", (string)time());
+        $api->mark("G12345", time());
     }
 
     public function testOpenWithWrongParametersReturnsException()
@@ -110,15 +110,15 @@ class ImTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->open(array(), "foo");
     }
-    
-    public function testOpenRequestShouldReturnApiObject()
+
+    public function testOpenRequestShouldReturnJsonObject()
     {
         $api = $this->getApiImMock('api-token');
 
         $api->expects($this->once())
             ->method('open')
             ->with("U12345", FALSE)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->open("U12345", FALSE);
     }
@@ -136,16 +136,16 @@ class ImTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->replies(array(), array());
     }
-    
-    public function testRepliesRequestShouldReturnApiObject()
+
+    public function testRepliesRequestShouldReturnJsonObject()
     {
         $api = $this->getApiImMock('api-token');
 
         $api->expects($this->once())
             ->method('replies')
-            ->with("C12345", (string)time())
-            ->will($this->returnValue($api));
+            ->with("C12345", time())
+            ->will($this->returnValue("string"));
 
-        $api->replies("C12345", (string)time());
+        $api->replies("C12345", time());
     }
 }

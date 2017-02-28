@@ -100,7 +100,7 @@ class Files extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -110,8 +110,8 @@ class Files extends AbstractApi
      *
      * @param  string $user
      * @param  string $channel
-     * @param  string $ts_from
-     * @param  string $ts_to
+     * @param  integer $ts_from
+     * @param  integer $ts_to
      * @param  string $types
      * @param  integer $count
      * @param  integer $page
@@ -126,10 +126,10 @@ class Files extends AbstractApi
         if (($channel != NULL) && !is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (!is_string($ts_from)) {
+        if (!is_int($ts_from)) {
             throw new InvalidArgumentException("The type of the ts_from variable is not valid.");
         }
-        if (!is_string($ts_to)) {
+        if (!is_int($ts_to)) {
             throw new InvalidArgumentException("The type of the ts_to variable is not valid.");
         }
         if (!is_string($types)) {
@@ -144,8 +144,8 @@ class Files extends AbstractApi
 
         // Set the arguments of the request
         $arguments = array(
-            "ts_from" => $ts_from,
-            "ts_to" => $ts_to,
+            "ts_from" => (string)$ts_from,
+            "ts_to" => (string)$ts_to,
             "types" => $types,
             "count" => $count,
             "page" => $page
@@ -174,7 +174,7 @@ class Files extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -217,7 +217,7 @@ class Files extends AbstractApi
     }
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -252,11 +252,11 @@ class Files extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -268,7 +268,7 @@ class Files extends AbstractApi
      * @param  string $channels
      * @return Files
      */
-    public function upload($filename, $path_to_file = NULL, $filetype = NULL, $title = NULL, 
+    public function upload($filename, $path_to_file = NULL, $filetype = NULL, $title = NULL,
         $initial_comment = NULL, $channels = NULL) {
 
         // Check if the type of the variables is valid.

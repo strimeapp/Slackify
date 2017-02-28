@@ -6,7 +6,7 @@ use Strime\Slackify\Api\UserGroups;
 use Strime\Slackify\Exception\InvalidArgumentException;
 use Strime\Slackify\Exception\RuntimeException;
 
-class UserGroupsTest extends AbstractApiTestCase
+class UserProfileTest extends AbstractApiTestCase
 {
     public function testGetWithWrongParametersReturnsException()
     {

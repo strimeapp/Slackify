@@ -21,7 +21,7 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->delete(array());
     }
-    
+
     public function testDeleteRequestShouldReturnApiObject()
     {
         $api = $this->getApiFilesMock('api-token');
@@ -47,15 +47,15 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->info(array(), array(), array());
     }
-    
-    public function testInfoRequestShouldReturnApiObject()
+
+    public function testInfoRequestShouldReturnJsonObject()
     {
         $api = $this->getApiFilesMock('api-token');
 
         $api->expects($this->once())
             ->method('info')
             ->with("F12345", 10, 10)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->info("F12345", 10, 10);
     }
@@ -73,17 +73,17 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->list(array(), array(), array());
     }
-    
-    public function testListRequestShouldReturnApiObject()
+
+    public function testListRequestShouldReturnJsonObject()
     {
         $api = $this->getApiFilesMock('api-token');
 
         $api->expects($this->once())
-            ->method('info')
-            ->with("U12345", NULL, (string)time())
-            ->will($this->returnValue($api));
+            ->method('list')
+            ->with("U12345", NULL, time())
+            ->will($this->returnValue("string"));
 
-        $api->info("U12345", NULL, (string)time());
+        $api->list("U12345", NULL, time());
     }
 
     public function testRevokePublicUrlWithWrongParametersReturnsException()
@@ -99,7 +99,7 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->revokePublicURL(array());
     }
-    
+
     public function testRevokePublicUrlRequestShouldReturnApiObject()
     {
         $api = $this->getApiFilesMock('api-token');
@@ -111,7 +111,7 @@ class FilesTest extends AbstractApiTestCase
 
         $api->revokePublicURL("F12345");
     }
-    
+
     public function testSharedPublicUrlWithWrongParametersReturnsException()
     {
         $api = $this->getApiFilesMock('api-token');
@@ -125,19 +125,19 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->sharedPublicURL(array());
     }
-    
-    public function testSharedPublicUrlRequestShouldReturnApiObject()
+
+    public function testSharedPublicUrlRequestShouldReturnJsonObject()
     {
         $api = $this->getApiFilesMock('api-token');
 
         $api->expects($this->once())
             ->method('sharedPublicURL')
             ->with("F12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->sharedPublicURL("F12345");
     }
-    
+
     public function testUploadWithWrongParametersReturnsException()
     {
         $api = $this->getApiFilesMock('api-token');
@@ -151,7 +151,7 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->upload(array(), array(), array(), array());
     }
-    
+
     public function testUploadWithWrongPathToFileReturnsException()
     {
         $api = $this->getApiFilesMock('api-token');
@@ -165,7 +165,7 @@ class FilesTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\RuntimeException');
         $api->upload("foo.txt", "/wrong/path/to/file");
     }
-    
+
     public function testUploadRequestShouldReturnApiObject()
     {
         $api = $this->getApiFilesMock('api-token');

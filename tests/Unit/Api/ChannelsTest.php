@@ -20,7 +20,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->archive(array());
     }
-    
+
     public function testArchiveRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');
@@ -46,15 +46,15 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->create(array());
     }
-    
-    public function testCreateRequestShouldReturnApiObject()
+
+    public function testCreateRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('create')
             ->with("channel-name")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->create("channel-name");
     }
@@ -72,15 +72,15 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->history(array(), array(), array());
     }
-    
-    public function testHistoryRequestShouldReturnApiObject()
+
+    public function testHistoryRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('history')
             ->with("channel-name", "now", 1000, 1)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->history("channel-name", "now", 1000, 1);
     }
@@ -98,15 +98,15 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->info(array());
     }
-    
-    public function testInfoRequestShouldReturnApiObject()
+
+    public function testInfoRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('info')
             ->with("channel-name")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->info("channel-name");
     }
@@ -124,15 +124,15 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->invite(array(), array());
     }
-    
-    public function testInviteRequestShouldReturnApiObject()
+
+    public function testInviteRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('invite')
             ->with("C123", "U123")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->invite("C123", "U123");
     }
@@ -150,15 +150,15 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->join(array());
     }
-    
-    public function testJoinRequestShouldReturnApiObject()
+
+    public function testJoinRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('join')
             ->with("C123")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->join("C123");
     }
@@ -176,7 +176,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->kick(array(), array());
     }
-    
+
     public function testKickRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');
@@ -202,7 +202,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->leave(array());
     }
-    
+
     public function testLeaveRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');
@@ -228,15 +228,15 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->list(array());
     }
-    
-    public function testListRequestShouldReturnApiObject()
+
+    public function testListRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('list')
             ->with(1)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->list(1);
     }
@@ -254,7 +254,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->mark(array(), array());
     }
-    
+
     public function testMarkRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');
@@ -280,17 +280,17 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->rename(array(), array());
     }
-    
-    public function testRenameRequestShouldReturnApiObject()
+
+    public function testRenameRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('rename')
-            ->with("C123", "test")
-            ->will($this->returnValue($api));
+            ->with("C123", "test", TRUE)
+            ->will($this->returnValue("string"));
 
-        $api->rename("C123", "test");
+        $api->rename("C123", "test", TRUE);
     }
 
     public function testRepliesWithWrongParametersReturnsException()
@@ -306,17 +306,17 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->replies(array(), array());
     }
-    
-    public function testRepliesRequestShouldReturnApiObject()
+
+    public function testRepliesRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
             ->method('replies')
-            ->with("C123", "123.456")
-            ->will($this->returnValue($api));
+            ->with("C123", 123.456)
+            ->will($this->returnValue("string"));
 
-        $api->replies("C123", "123.456");
+        $api->replies("C123", 123.456);
     }
 
     public function testPurposeWithWrongParametersReturnsException()
@@ -332,7 +332,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->setPurpose(array(), array());
     }
-    
+
     public function testPurposeRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');
@@ -358,7 +358,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->setTopic(array(), array());
     }
-    
+
     public function testTopicRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');
@@ -384,7 +384,7 @@ class ChannelsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->unarchive(array());
     }
-    
+
     public function testUnarchiveRequestShouldReturnApiObject()
     {
         $api = $this->getApiChannelsMock('api-token');

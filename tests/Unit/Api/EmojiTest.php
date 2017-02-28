@@ -7,14 +7,14 @@ use Strime\Slackify\Exception\InvalidArgumentException;
 
 class EmojiTest extends AbstractApiTestCase
 {
-    public function testEmojiRequestShouldReturnApiObject()
+    public function testEmojiRequestShouldReturnJsonObject()
     {
         $api = $this->getApiEmojiMock('api-token');
 
         $api->expects($this->once())
             ->method('list')
             ->with()
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->list();
     }

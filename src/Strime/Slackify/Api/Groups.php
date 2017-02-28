@@ -56,7 +56,7 @@ class Groups extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -91,12 +91,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -131,12 +131,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -171,12 +171,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -236,12 +236,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -276,12 +276,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -321,12 +321,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -371,7 +371,7 @@ class Groups extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -411,7 +411,7 @@ class Groups extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -446,12 +446,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -496,7 +496,7 @@ class Groups extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -531,12 +531,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -576,17 +576,17 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
      * @param  string $channel
-     * @param  string $thread_ts
+     * @param  float $thread_ts
      * @return Groups
      */
     public function replies($channel, $thread_ts) {
@@ -595,14 +595,14 @@ class Groups extends AbstractApi
         if (!is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (!is_string($thread_ts)) {
+        if (!is_float($thread_ts)) {
             throw new InvalidArgumentException("The type of the thread_ts variable is not valid.");
         }
 
         // Set the arguments of the request
         $arguments = array(
             "channel" => $channel,
-            "thread_ts" => $thread_ts
+            "thread_ts" => (string)$thread_ts
         );
 
         $this->setUrl("groups.replies", $arguments);
@@ -621,12 +621,12 @@ class Groups extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -671,7 +671,7 @@ class Groups extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -716,7 +716,7 @@ class Groups extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *

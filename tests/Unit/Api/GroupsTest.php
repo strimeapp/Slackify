@@ -21,7 +21,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->archive(array());
     }
-    
+
     public function testArchiveRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -47,15 +47,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->close(array());
     }
-    
-    public function testCloseRequestShouldReturnApiObject()
+
+    public function testCloseRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('close')
             ->with("G12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->close("G12345");
     }
@@ -73,15 +73,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->create(array());
     }
-    
-    public function testCreateRequestShouldReturnApiObject()
+
+    public function testCreateRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('create')
             ->with("Foo")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->create("Foo");
     }
@@ -99,15 +99,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->createChild(array());
     }
-    
-    public function testCreateChildRequestShouldReturnApiObject()
+
+    public function testCreateChildRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('createChild')
             ->with("G12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->createChild("G12345");
     }
@@ -125,7 +125,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->history(array(), array(), array(), array());
     }
-    
+
     public function testHistoryRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -151,15 +151,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->info(array());
     }
-    
-    public function testInfoRequestShouldReturnApiObject()
+
+    public function testInfoRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('info')
             ->with("G12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->info("G12345");
     }
@@ -177,8 +177,8 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->invite(array(), array());
     }
-    
-    public function testInviteRequestShouldReturnApiObject()
+
+    public function testInviteRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
@@ -203,7 +203,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->kick(array(), array());
     }
-    
+
     public function testKickRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -229,7 +229,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->leave(array());
     }
-    
+
     public function testLeaveRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -255,15 +255,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->list("foo");
     }
-    
-    public function testListRequestShouldReturnApiObject()
+
+    public function testListRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('list')
             ->with(1)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->list(1);
     }
@@ -281,7 +281,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->mark(array(), array());
     }
-    
+
     public function testMarkRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -307,15 +307,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->open(array());
     }
-    
-    public function testOpenRequestShouldReturnApiObject()
+
+    public function testOpenRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('open')
             ->with("G12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->open("G12345");
     }
@@ -333,15 +333,15 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->rename(array(), array());
     }
-    
-    public function testRenameRequestShouldReturnApiObject()
+
+    public function testRenameRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('rename')
             ->with("G12345", "Foo bar")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->rename("G12345", "Foo bar");
     }
@@ -359,17 +359,17 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->replies(array(), array());
     }
-    
-    public function testRepliesRequestShouldReturnApiObject()
+
+    public function testRepliesRequestShouldReturnJsonObject()
     {
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
             ->method('replies')
-            ->with("C12345", (string)time())
-            ->will($this->returnValue($api));
+            ->with("C12345", time())
+            ->will($this->returnValue("string"));
 
-        $api->replies("C12345", (string)time());
+        $api->replies("C12345", time());
     }
 
     public function testSetPurposeWithWrongParametersReturnsException()
@@ -385,7 +385,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->setPurpose(array(), array());
     }
-    
+
     public function testSetPurposeRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -411,7 +411,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->setTopic(array(), array());
     }
-    
+
     public function testSetTopicRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');
@@ -437,7 +437,7 @@ class GroupsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->unarchive(array());
     }
-    
+
     public function testUnarchiveRequestShouldReturnApiObject()
     {
         $api = $this->getApiGroupsMock('api-token');

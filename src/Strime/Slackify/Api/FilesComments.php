@@ -64,7 +64,7 @@ class FilesComments extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -155,6 +155,6 @@ class FilesComments extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 }

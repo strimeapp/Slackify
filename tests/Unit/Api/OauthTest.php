@@ -21,8 +21,8 @@ class OauthTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->access(array(), array(), array());
     }
-    
-    public function testAccessRequestShouldReturnApiObject()
+
+    public function testAccessRequestShouldReturnJsonObject()
     {
         $api = $this->getApiOauthMock('api-token');
 

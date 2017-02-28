@@ -98,34 +98,44 @@ Each section of the [API documentation](https://api.slack.com/methods) has its o
 
 ```php
 use Strime\Slackify\Api\Api;
-use Strime\Slackify\Api\Auth;
-use Strime\Slackify\Api\Bots;
-use Strime\Slackify\Api\Channels;
-use Strime\Slackify\Api\Chat;
-use Strime\Slackify\Api\Dnd;
-use Strime\Slackify\Api\Emoji;
-use Strime\Slackify\Api\Files;
-use Strime\Slackify\Api\FilesComments;
-use Strime\Slackify\Api\Im;
-use Strime\Slackify\Api\Mpim;
-use Strime\Slackify\Api\Oauth;
-use Strime\Slackify\Api\Pin;
-use Strime\Slackify\Api\Reactions;
-use Strime\Slackify\Api\Reminders;
-use Strime\Slackify\Api\Rtm;
 
 // API request
 $api_request = new Api("your-api-token-comes-here");
 $api_request->test();
+```
+
+The following links will give you more details about the methods, specially about the variables and the error codes:
+- [test](https://api.slack.com/methods/api.test)
+
+
+```php
+use Strime\Slackify\Api\Auth;
 
 // Auth requests
 $api_auth_request = new Auth("your-api-token-comes-here");
 $api_auth_request->revoke("a-token-to-revoke", TRUE);
 $api_auth_request->test("a-token-to-test");
+```
+
+The following links will give you more details about the methods:
+- [revoke](https://api.slack.com/methods/auth.revoke)
+- [test](https://api.slack.com/methods/auth.test)
+
+
+```php
+use Strime\Slackify\Api\Bots;
 
 // Bots requests
 $api_bots_request = new Bots("your-api-token-comes-here");
 $api_bots_request->info("B123456");
+```
+
+The following links will give you more details about the methods:
+- [info](https://api.slack.com/methods/bots.info)
+
+
+```php
+use Strime\Slackify\Api\Channels;
 
 // Channels requests
 $api_channels_request = new Channels("your-api-token-comes-here");
@@ -144,13 +154,46 @@ $api_channels_request->replies("C123456", time());
 $api_channels_request->setPurpose("C123456", "New purpose");
 $api_channels_request->setTopic("C123456", "New topic");
 $api_channels_request->unarchive("C123456");
+```
+
+The following links will give you more details about the methods:
+- [archive](https://api.slack.com/methods/channels.archive)
+- [create](https://api.slack.com/methods/channels.create)
+- [history](https://api.slack.com/methods/channels.history)
+- [info](https://api.slack.com/methods/channels.info)
+- [invite](https://api.slack.com/methods/channels.invite)
+- [join](https://api.slack.com/methods/channels.join)
+- [kick](https://api.slack.com/methods/channels.kick)
+- [leave](https://api.slack.com/methods/channels.leave)
+- [list](https://api.slack.com/methods/channels.list)
+- [mark](https://api.slack.com/methods/channels.mark)
+- [rename](https://api.slack.com/methods/channels.rename)
+- [replies](https://api.slack.com/methods/channels.replies)
+- [setPurpose](https://api.slack.com/methods/channels.setPurpose)
+- [setTopic](https://api.slack.com/methods/channels.setTopic)
+- [unarchive](https://api.slack.com/methods/channels.unarchive)
+
+
+```php
+use Strime\Slackify\Api\Chat;
 
 // Chat requests
 $api_chat_request = new Chat("your-api-token-comes-here");
-$api_chat_request->delete((string)time(), "C12345");
+$api_chat_request->delete(time(), "C12345");
 $api_chat_request->meMessage("C12345", "foo bar");
 $api_chat_request->postMessage("C12345", "foo bar", "full", 0);
-$api_chat_request->update((string)time(), "C12345", "foo bar");
+$api_chat_request->update(time(), "C12345", "foo bar");
+```
+
+The following links will give you more details about the methods:
+- [delete](https://api.slack.com/methods/chat.delete)
+- [meMessage](https://api.slack.com/methods/chat.meMessage)
+- [postMessage](https://api.slack.com/methods/chat.postMessage)
+- [update](https://api.slack.com/methods/chat.update)
+
+
+```php
+use Strime\Slackify\Api\Dnd;
 
 // Dnd requests
 $api_dnd_request = new Dnd("your-api-token-comes-here");
@@ -159,16 +202,46 @@ $api_dnd_request->endSnooze();
 $api_dnd_request->info("U12345");
 $api_dnd_request->setSnooze(10);
 $api_dnd_request->teamInfo("U12345,U67890");
+```
+
+The following links will give you more details about the methods:
+- [endDnd](https://api.slack.com/methods/dnd.endDnd)
+- [endSnooze](https://api.slack.com/methods/dnd.endSnooze)
+- [info](https://api.slack.com/methods/dnd.info)
+- [setSnooze](https://api.slack.com/methods/dnd.setSnooze)
+- [teamInfo](https://api.slack.com/methods/dnd.teamInfo)
+
+
+```php
+use Strime\Slackify\Api\Emoji;
 
 // Emoji requests
 $api_emoji_request = new Emoji("your-api-token-comes-here");
 $api_emoji_request->list();
+```
+
+The following links will give you more details about the methods:
+- [list](https://api.slack.com/methods/emoji.list)
+
+
+```php
+use Strime\Slackify\Api\FilesComments;
 
 // FilesComments requests
 $api_files_comments_request = new FilesComments("your-api-token-comes-here");
 $api_files_comments_request->add("F12345", "Foo bar", "U12345");
 $api_files_comments_request->delete("F12345", "Fc12345");
 $api_files_comments_request->edit("F12345", "Fc12345", "Foo bar");
+```
+
+The following links will give you more details about the methods:
+- [add](https://api.slack.com/methods/files.comments.add)
+- [delete](https://api.slack.com/methods/files.comments.delete)
+- [edit](https://api.slack.com/methods/files.comments.edit)
+
+
+```php
+use Strime\Slackify\Api\Files;
 
 // Files requests
 $api_files_request = new Files("your-api-token-comes-here");
@@ -178,6 +251,19 @@ $api_files_request->list("U12345", "C12345", "now", "all", "all", 100, 1);
 $api_files_request->revokePublicURL("F12345");
 $api_files_request->sharedPublicURL("F12345");
 $api_files_request->upload("test.txt", "/path/to/file", "text", "A title", "A comment", "C12345,C67890");
+```
+
+The following links will give you more details about the methods:
+- [delete](https://api.slack.com/methods/files.delete)
+- [info](https://api.slack.com/methods/files.info)
+- [list](https://api.slack.com/methods/files.list)
+- [revokePublicURL](https://api.slack.com/methods/files.revokePublicURL)
+- [sharedPublicURL](https://api.slack.com/methods/files.sharedPublicURL)
+- [upload](https://api.slack.com/methods/files.upload)
+
+
+```php
+use Strime\Slackify\Api\Groups;
 
 // Groups requests
 $api_groups_request = new Groups("your-api-token-comes-here");
@@ -194,32 +280,90 @@ $api_groups_request->list(1);
 $api_groups_request->mark("G12345", (string)time());
 $api_groups_request->open("G12345");
 $api_groups_request->rename("G12345", "Foo bar");
-$api_groups_request->replies("C12345", (string)time());
+$api_groups_request->replies("C12345", time());
 $api_groups_request->setPurpose("G12345", "Foo bar");
 $api_groups_request->setTopic("G12345", "Foo bar");
 $api_groups_request->unarchive("G12345");
+```
+
+The following links will give you more details about the methods:
+- [archive](https://api.slack.com/methods/groups.archive)
+- [close](https://api.slack.com/methods/groups.create)
+- [create](https://api.slack.com/methods/files.list)
+- [createChild](https://api.slack.com/methods/groups.createChild)
+- [history](https://api.slack.com/methods/groups.history)
+- [info](https://api.slack.com/methods/groups.info)
+- [invite](https://api.slack.com/methods/groups.invite)
+- [kick](https://api.slack.com/methods/groups.kick)
+- [leave](https://api.slack.com/methods/groups.leave)
+- [list](https://api.slack.com/methods/groups.list)
+- [mark](https://api.slack.com/methods/groups.mark)
+- [open](https://api.slack.com/methods/groups.open)
+- [rename](https://api.slack.com/methods/groups.rename)
+- [replies](https://api.slack.com/methods/groups.replies)
+- [setPurpose](https://api.slack.com/methods/groups.setPurpose)
+- [setTopic](https://api.slack.com/methods/groups.setTopic)
+- [unarchive](https://api.slack.com/methods/groups.unarchive)
+
+
+```php
+use Strime\Slackify\Api\Im;
 
 // Im requests
 $api_im_request = new Im("your-api-token-comes-here");
 $api_im_request->close("D12345");
 $api_im_request->history("G12345", "now", "0", 0, 100, 1);
 $api_im_request->list();
-$api_im_request->mark("D12345", (string)time());
+$api_im_request->mark("D12345", time());
 $api_im_request->open("U12345", TRUE);
-$api_im_request->replies("D12345", (string)time());
+$api_im_request->replies("D12345", time());
+```
+
+The following links will give you more details about the methods:
+- [close](https://api.slack.com/methods/im.close)
+- [history](https://api.slack.com/methods/im.history)
+- [list](https://api.slack.com/methods/im.list)
+- [mark](https://api.slack.com/methods/im.mark)
+- [open](https://api.slack.com/methods/im.open)
+- [replies](https://api.slack.com/methods/im.replies)
+
+
+```php
+use Strime\Slackify\Api\Mpim;
 
 // Mpim requests
 $api_mpim_request = new Mpim("your-api-token-comes-here");
 $api_mpim_request->close("D12345");
 $api_mpim_request->history("G12345", "now", "0", 0, 100, 1);
 $api_mpim_request->list();
-$api_mpim_request->mark("D12345", (string)time());
+$api_mpim_request->mark("D12345", time());
 $api_mpim_request->open("U12345,U67890", TRUE);
-$api_mpim_request->replies("D12345", (string)time());
+$api_mpim_request->replies("D12345", time());
+```
+
+The following links will give you more details about the methods:
+- [close](https://api.slack.com/methods/mpim.close)
+- [history](https://api.slack.com/methods/mpim.history)
+- [list](https://api.slack.com/methods/mpim.list)
+- [mark](https://api.slack.com/methods/mpim.mark)
+- [open](https://api.slack.com/methods/mpim.open)
+- [replies](https://api.slack.com/methods/mpim.replies)
+
+
+```php
+use Strime\Slackify\Api\Oauth;
+use Strime\Slackify\Api\Pin;
+use Strime\Slackify\Api\Reactions;
+use Strime\Slackify\Api\Reminders;
+use Strime\Slackify\Api\Rtm;
 
 // Oauth requests
 $api_oauth_request = new Oauth("your-api-token-comes-here");
 $api_oauth_request->access("client_id", "client_secret", "code", "https://www.foo.com");
+```
+
+The following links will give you more details about the methods:
+- [access](https://api.slack.com/methods/oauth.access)
 
 // Pin requests
 $api_pin_request = new Pin("your-api-token-comes-here");
@@ -246,5 +390,3 @@ $api_reminders_request->list();
 $api_rtm_request = new Rtm("your-api-token-comes-here");
 $api_rtm_request->access(TRUE, FALSE, TRUE);
 ```
-
-

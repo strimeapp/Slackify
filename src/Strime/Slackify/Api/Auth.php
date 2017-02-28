@@ -20,12 +20,16 @@ class Auth extends AbstractApi
     /**
      * {@inheritdoc}
      *
+     * @param  string $token
      * @param  boolean $test
      * @return Auth
      */
-    public function revoke($test = FALSE) {
+    public function revoke($token = NULL, $test = FALSE) {
 
         // Check if the type of the variables is valid.
+        if (($token != NULL) && !is_string($token)) {
+            throw new InvalidArgumentException("The type of the token variable is not valid.");
+        }
         if (!is_bool($test)) {
             throw new InvalidArgumentException("The type of the test variable is not valid.");
         }
@@ -34,6 +38,10 @@ class Auth extends AbstractApi
         $arguments = array(
             "test" => $test
         );
+
+        if($token != NULL) {
+            $arguments["token"] = $token;
+        }
 
         $this->setUrl("auth.revoke", $arguments);
 
@@ -78,6 +86,6 @@ class Auth extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 }

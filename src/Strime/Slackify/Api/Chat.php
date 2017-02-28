@@ -20,7 +20,7 @@ class Chat extends AbstractApi
     /**
      * {@inheritdoc}
      *
-     * @param  string $ts
+     * @param  float $ts
      * @param  string $channel
      * @param  string $as_user
      * @return Chat
@@ -28,7 +28,7 @@ class Chat extends AbstractApi
     public function delete($ts, $channel, $as_user = NULL) {
 
         // Check if the type of the variables is valid.
-        if (!is_string($ts)) {
+        if (!is_float($ts)) {
             throw new InvalidArgumentException("The type of the ts variable is not valid.");
         }
         if (!is_string($channel)) {
@@ -40,7 +40,7 @@ class Chat extends AbstractApi
 
         // Set the arguments of the request
         $arguments = array(
-            "ts" => $ts,
+            "ts" => (string)$ts,
             "channel" => $channel
         );
 
@@ -64,7 +64,7 @@ class Chat extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -108,7 +108,7 @@ class Chat extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -127,11 +127,11 @@ class Chat extends AbstractApi
      * @param  bool $as_user
      * @param  string $icon_url
      * @param  string $icon_emoji
-     * @param  string $thread_ts
+     * @param  float $thread_ts
      * @param  string $reply_broadcast
      * @return Chat
      */
-    public function postMessage($channel, $text, $parse = "none", $link_names = 1, $attachments = NULL, 
+    public function postMessage($channel, $text, $parse = "none", $link_names = 1, $attachments = NULL,
         $unfurl_links = TRUE, $unfurl_media = FALSE, $username = NULL, $as_user = TRUE, $icon_url = NULL,
         $icon_emoji = NULL, $thread_ts = NULL, $reply_broadcast = TRUE) {
 
@@ -169,7 +169,7 @@ class Chat extends AbstractApi
         if (($icon_emoji != NULL) && !is_string($icon_emoji)) {
             throw new InvalidArgumentException("The type of the icon_emoji variable is not valid.");
         }
-        if (($thread_ts != NULL) && !is_string($thread_ts)) {
+        if (($thread_ts != NULL) && !is_float($thread_ts)) {
             throw new InvalidArgumentException("The type of the thread_ts variable is not valid.");
         }
         if (!is_bool($reply_broadcast)) {
@@ -201,7 +201,7 @@ class Chat extends AbstractApi
             $arguments["icon_emoji"] = $icon_emoji;
         }
         if($thread_ts != NULL) {
-            $arguments["thread_ts"] = $thread_ts;
+            $arguments["thread_ts"] = (string)$thread_ts;
         }
 
         $this->setUrl("chat.postMessage", $arguments);
@@ -220,7 +220,7 @@ class Chat extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -230,7 +230,7 @@ class Chat extends AbstractApi
      *
      * @param  string $channel
      * @param  string $text
-     * @param  string $ts
+     * @param  float $ts
      * @param  string $attachments
      * @param  string $parse
      * @param  integer $link_names
@@ -240,7 +240,7 @@ class Chat extends AbstractApi
     public function update($ts, $channel, $text, $attachments = NULL, $parse = "none", $link_names = 1, $as_user = TRUE) {
 
         // Check if the type of the variables is valid.
-        if (!is_string($ts)) {
+        if (!is_float($ts)) {
             throw new InvalidArgumentException("The type of the ts variable is not valid.");
         }
         if (!is_string($channel)) {
@@ -264,7 +264,7 @@ class Chat extends AbstractApi
 
         // Set the arguments of the request
         $arguments = array(
-            "ts" => $ts,
+            "ts" => (string)$ts,
             "channel" => $channel,
             "text" => $text,
             "parse" => $parse,
@@ -292,6 +292,6 @@ class Chat extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 }

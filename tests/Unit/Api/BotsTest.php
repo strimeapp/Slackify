@@ -20,15 +20,15 @@ class BotsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->info(array());
     }
-    
-    public function testInfoRequestShouldReturnApiObject()
+
+    public function testInfoRequestShouldReturnJsonObject()
     {
         $api = $this->getApiBotsMock('api-token');
 
         $api->expects($this->once())
             ->method('info')
             ->with("bot-name")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->info("bot-name");
     }

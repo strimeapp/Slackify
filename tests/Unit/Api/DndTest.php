@@ -6,7 +6,7 @@ use Strime\Slackify\Api\Dnd;
 use Strime\Slackify\Exception\InvalidArgumentException;
 
 class DndTest extends AbstractApiTestCase
-{   
+{
     public function testEndDndRequestShouldReturnApiObject()
     {
         $api = $this->getApiDndMock('api-token');
@@ -19,13 +19,13 @@ class DndTest extends AbstractApiTestCase
     }
 
 
-    public function testEndSnoozeRequestShouldReturnApiObject()
+    public function testEndSnoozeRequestShouldReturnJsonObject()
     {
         $api = $this->getApiDndMock('api-token');
 
         $api->expects($this->once())
             ->method('endSnooze')
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->endSnooze();
     }
@@ -43,15 +43,15 @@ class DndTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->info(array());
     }
-    
-    public function testInfoRequestShouldReturnApiObject()
+
+    public function testInfoRequestShouldReturnJsonObject()
     {
         $api = $this->getApiDndMock('api-token');
 
         $api->expects($this->once())
             ->method('info')
             ->with("U12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->info("U12345");
     }
@@ -69,15 +69,15 @@ class DndTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->setSnooze(array());
     }
-    
-    public function testSetSnoozeRequestShouldReturnApiObject()
+
+    public function testSetSnoozeRequestShouldReturnJsonObject()
     {
         $api = $this->getApiDndMock('api-token');
 
         $api->expects($this->once())
             ->method('setSnooze')
             ->with(10)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->setSnooze(10);
     }
@@ -95,15 +95,15 @@ class DndTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->teamInfo(array());
     }
-    
-    public function testTeamInfoRequestShouldReturnApiObject()
+
+    public function testTeamInfoRequestShouldReturnJsonObject()
     {
         $api = $this->getApiDndMock('api-token');
 
         $api->expects($this->once())
             ->method('teamInfo')
             ->with("U12345,U67890")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->teamInfo("U12345,U67890");
     }

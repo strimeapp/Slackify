@@ -90,7 +90,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -151,7 +151,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -190,7 +190,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -234,7 +234,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -273,7 +273,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -395,7 +395,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -404,7 +404,7 @@ class Channels extends AbstractApi
      * {@inheritdoc}
      *
      * @param  string $channel
-     * @param  integer $ts
+     * @param  float $ts
      * @return Channels
      */
     public function mark($channel, $ts) {
@@ -413,14 +413,14 @@ class Channels extends AbstractApi
         if (!is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (!is_integer($ts)) {
+        if (!is_float($ts)) {
             throw new InvalidArgumentException("The type of the ts variable is not valid.");
         }
 
         // Set the arguments of the request
         $arguments = array(
             "channel" => $channel,
-            "ts" => $ts
+            "ts" => (string)$ts
         );
 
         $this->setUrl("channels.mark", $arguments);
@@ -449,9 +449,10 @@ class Channels extends AbstractApi
      *
      * @param  string $channel
      * @param  string $name
+     * @param  boolean $validate
      * @return Channels
      */
-    public function rename($channel, $name) {
+    public function rename($channel, $name, $validate = TRUE) {
 
         // Check if the type of the variables is valid.
         if (!is_string($channel)) {
@@ -460,11 +461,15 @@ class Channels extends AbstractApi
         if (!is_string($name)) {
             throw new InvalidArgumentException("The type of the name variable is not valid.");
         }
+        if (!is_bool($validate)) {
+            throw new InvalidArgumentException("The type of the validate variable is not valid.");
+        }
 
         // Set the arguments of the request
         $arguments = array(
             "channel" => $channel,
-            "name" => $name
+            "name" => $name,
+            "validate" => $validate
         );
 
         $this->setUrl("channels.rename", $arguments);
@@ -483,7 +488,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
@@ -492,7 +497,7 @@ class Channels extends AbstractApi
      * {@inheritdoc}
      *
      * @param  string $channel
-     * @param  string $thread_ts
+     * @param  float $thread_ts
      * @return Channels
      */
     public function replies($channel, $thread_ts) {
@@ -501,11 +506,14 @@ class Channels extends AbstractApi
         if (!is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
+        if (!is_float($thread_ts)) {
+            throw new InvalidArgumentException("The type of the thread_ts variable is not valid.");
+        }
 
         // Set the arguments of the request
         $arguments = array(
             "channel" => $channel,
-            "thread_ts" => $thread_ts
+            "thread_ts" => (string)$thread_ts
         );
 
         $this->setUrl("channels.replies", $arguments);
@@ -524,7 +532,7 @@ class Channels extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 

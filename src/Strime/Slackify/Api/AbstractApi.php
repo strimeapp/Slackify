@@ -69,10 +69,22 @@ abstract class AbstractApi implements ApiInterface
         // Set a new array
         $arguments_list = array();
 
+        // Check if a token is set through the arguments
+        $token_is_set = FALSE;
+
         if ($arguments != NULL) {
             foreach ($arguments as $key => $value) {
                 $arguments_list[] = $key . "=" . $value;
+
+                if(strcmp($key, "token") == 0) {
+                    $token_is_set = TRUE;
+                }
             }
+        }
+
+        // If the token has not been set, add it to the list
+        if(!$token_is_set && isset($this->token) && is_string($this->token)) {
+            $arguments_list[] = "token=".$this->token;
         }
 
         $this->url = self::SLACK_API_URL . $method . "?" . implode("&", $arguments_list);
@@ -86,5 +98,5 @@ abstract class AbstractApi implements ApiInterface
     public function getUrl() {
         return $this->url;
     }
-    
+
 }

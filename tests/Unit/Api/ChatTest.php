@@ -20,17 +20,17 @@ class ChatTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->delete(array(), array(), "foo");
     }
-    
-    public function testDeleteRequestShouldReturnApiObject()
+
+    public function testDeleteRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChatMock('api-token');
 
         $api->expects($this->once())
             ->method('delete')
-            ->with((string)time(), "C12345")
-            ->will($this->returnValue($api));
+            ->with(time(), "C12345")
+            ->will($this->returnValue("string"));
 
-        $api->delete((string)time(), "C12345");
+        $api->delete(time(), "C12345");
     }
 
     public function testMeMessageWithWrongParametersReturnsException()
@@ -46,15 +46,15 @@ class ChatTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->meMessage(array(), array());
     }
-    
-    public function testMeMessageRequestShouldReturnApiObject()
+
+    public function testMeMessageRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChatMock('api-token');
 
         $api->expects($this->once())
             ->method('meMessage')
             ->with("C12345", "foo bar")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->meMessage("C12345", "foo bar");
     }
@@ -72,15 +72,15 @@ class ChatTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->postMessage(array(), array());
     }
-    
-    public function testPostMessageRequestShouldReturnApiObject()
+
+    public function testPostMessageRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChatMock('api-token');
 
         $api->expects($this->once())
             ->method('postMessage')
             ->with("C12345", "foo bar", "full", 0)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->postMessage("C12345", "foo bar", "full", 0);
     }
@@ -98,15 +98,15 @@ class ChatTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->update(array(), array(), array());
     }
-    
-    public function testUpdateRequestShouldReturnApiObject()
+
+    public function testUpdateRequestShouldReturnJsonObject()
     {
         $api = $this->getApiChatMock('api-token');
 
         $api->expects($this->once())
             ->method('update')
             ->with((string)time(), "C12345", "foo bar")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->update((string)time(), "C12345", "foo bar");
     }

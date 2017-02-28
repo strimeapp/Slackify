@@ -20,15 +20,15 @@ class FilesCommentsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->add(array(), array(), array());
     }
-    
-    public function testAddRequestShouldReturnApiObject()
+
+    public function testAddRequestShouldReturnJsonObject()
     {
         $api = $this->getApiFilesCommentsMock('api-token');
 
         $api->expects($this->once())
             ->method('add')
             ->with("F12345", "Foo bar", "U12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->add("F12345", "Foo bar", "U12345");
     }
@@ -46,7 +46,7 @@ class FilesCommentsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->delete(array(), array());
     }
-    
+
     public function testDeleteRequestShouldReturnApiObject()
     {
         $api = $this->getApiFilesCommentsMock('api-token');
@@ -72,15 +72,15 @@ class FilesCommentsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->edit(array(), array(), array());
     }
-    
-    public function testEditRequestShouldReturnApiObject()
+
+    public function testEditRequestShouldReturnJsonObject()
     {
         $api = $this->getApiFilesCommentsMock('api-token');
 
         $api->expects($this->once())
             ->method('edit')
             ->with("F12345", "Fc12345", "Foo bar")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->edit("F12345", "Fc12345", "Foo bar");
     }
