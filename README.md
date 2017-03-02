@@ -352,10 +352,6 @@ The following links will give you more details about the methods:
 
 ```php
 use Strime\Slackify\Api\Oauth;
-use Strime\Slackify\Api\Pin;
-use Strime\Slackify\Api\Reactions;
-use Strime\Slackify\Api\Reminders;
-use Strime\Slackify\Api\Rtm;
 
 // Oauth requests
 $api_oauth_request = new Oauth("your-api-token-comes-here");
@@ -365,11 +361,23 @@ $api_oauth_request->access("client_id", "client_secret", "code", "https://www.fo
 The following links will give you more details about the methods:
 - [access](https://api.slack.com/methods/oauth.access)
 
+```php
+use Strime\Slackify\Api\Pin;
+
 // Pin requests
 $api_pin_request = new Pin("your-api-token-comes-here");
-$api_pin_request->add("C12345", "F12345", "Fc12345", (string)time());
+$api_pin_request->add("C12345", "F12345", "Fc12345", time());
 $api_pin_request->list("C12345");
-$api_pin_request->remove("C12345", "F12345", "Fc12345", (string)time());
+$api_pin_request->remove("C12345", "F12345", "Fc12345", time());
+```
+
+The following links will give you more details about the methods:
+- [add](https://api.slack.com/methods/pins.close)
+- [list](https://api.slack.com/methods/pins.list)
+- [remove](https://api.slack.com/methods/pins.remove)
+
+```php
+use Strime\Slackify\Api\Reactions;
 
 // Reactions requests
 $api_reactions_request = new Reactions("your-api-token-comes-here");
@@ -377,16 +385,149 @@ $api_reactions_request->add("F12345", "Fc12345", "C12345", time());
 $api_reactions_request->get("F12345", "Fc12345", "C12345");
 $api_reactions_request->list("U12345", TRUE);
 $api_reactions_request->remove("F12345", "Fc12345", "C12345", time());
+```
+
+The following links will give you more details about the methods:
+- [add](https://api.slack.com/methods/reactions.add)
+- [get](https://api.slack.com/methods/reactions.get)
+- [list](https://api.slack.com/methods/reactions.list)
+- [remove](https://api.slack.com/methods/reactions.remove)
+
+```php
+use Strime\Slackify\Api\Reminders;
 
 // Reminders requests
 $api_reminders_request = new Reminders("your-api-token-comes-here");
-$api_reminders_request->add("Foo", (string)time(), "U12345");
+$api_reminders_request->add("Foo", time(), "U12345");
 $api_reminders_request->complete("Rm12345");
 $api_reminders_request->delete("Rm12345");
 $api_reminders_request->info("Rm12345");
 $api_reminders_request->list();
+```
+
+The following links will give you more details about the methods:
+- [add](https://api.slack.com/methods/reminders.add)
+- [complete](https://api.slack.com/methods/reminders.complete)
+- [delete](https://api.slack.com/methods/reminders.delete)
+- [info](https://api.slack.com/methods/reminders.info)
+- [list](https://api.slack.com/methods/reminders.list)
+
+```php
+use Strime\Slackify\Api\Rtm;
 
 // Rtm requests
 $api_rtm_request = new Rtm("your-api-token-comes-here");
-$api_rtm_request->access(TRUE, FALSE, TRUE);
+$api_rtm_request->start(TRUE, FALSE, TRUE);
 ```
+
+The following links will give you more details about the methods:
+- [start](https://api.slack.com/methods/rtm.start)
+
+```php
+use Strime\Slackify\Api\Search;
+
+// Search requests
+$api_search_request = new Search("your-api-token-comes-here");
+$api_search_request->all("pickleface", "score", "asc", TRUE, 20, 3);
+$api_search_request->files("pickleface", "timestamp", "asc", TRUE, 20, 3);
+$api_search_request->messages("pickleface", "timestamp", "asc", TRUE, 20, 3);
+```
+
+The following links will give you more details about the methods:
+- [all](https://api.slack.com/methods/search.all)
+- [files](https://api.slack.com/methods/search.files)
+- [messages](https://api.slack.com/methods/search.messages)
+
+```php
+use Strime\Slackify\Api\Stars;
+
+// Search requests
+$api_stars_request = new Stars("your-api-token-comes-here");
+$api_stars_request->add("F12345", "Fc12345", "C12345", time());
+$api_stars_request->list(20, 3);
+$api_stars_request->remove("F12345", "Fc12345", "C12345", time());
+```
+
+The following links will give you more details about the methods:
+- [add](https://api.slack.com/methods/stars.add)
+- [list](https://api.slack.com/methods/stars.list)
+- [remove](https://api.slack.com/methods/stars.remove)
+
+```php
+use Strime\Slackify\Api\Team;
+
+// Search requests
+$api_team_request = new Team("your-api-token-comes-here");
+$api_team_request->accessLogs(100, 2, "now");
+$api_team_request->billableInfo("U12345");
+$api_team_request->info();
+$api_team_request->integrationLogs("foo", "bar", "U12345", "foo", 20, 2);
+$api_team_request->profile.get("all");
+```
+
+The following links will give you more details about the methods:
+- [accessLogs](https://api.slack.com/methods/team.accessLogs)
+- [billableInfo](https://api.slack.com/methods/team.billableInfo)
+- [info](https://api.slack.com/methods/team.info)
+- [integrationLogs](https://api.slack.com/methods/team.integrationLogs)
+- [profile.get](https://api.slack.com/methods/team.profile.get)
+
+```php
+use Strime\Slackify\Api\UserGroups;
+
+// Search requests
+$api_user_groups_request = new UserGroups("your-api-token-comes-here");
+$api_user_groups_request->create("foo", "bar", "description", "C12345,C67890");
+$api_user_groups_request->disable("S12345", TRUE);
+$api_user_groups_request->enable("S12345", TRUE);
+$api_user_groups_request->list(TRUE, FALSE, TRUE);
+$api_user_groups_request->update("S12345", "Foo", "bar", "description", "C12345,C67890", TRUE);
+$api_user_groups_request->users.list("S12345", TRUE);
+$api_user_groups_request->users.update("S12345", "U12345,U67890", TRUE);
+```
+
+The following links will give you more details about the methods:
+- [create](https://api.slack.com/methods/usergroups.create)
+- [disable](https://api.slack.com/methods/usergroups.disable)
+- [enable](https://api.slack.com/methods/usergroups.enable)
+- [list](https://api.slack.com/methods/usergroups.list)
+- [update](https://api.slack.com/methods/usergroups.update)
+- [users.list](https://api.slack.com/methods/usergroups.users.list)
+- [users.update](https://api.slack.com/methods/usergroups.users.update)
+
+```php
+use Strime\Slackify\Api\Users;
+
+// Search requests
+$api_users_request = new Users("your-api-token-comes-here");
+$api_users_request->deletePhoto();
+$api_users_request->getPresence("U12345");
+$api_users_request->identity();
+$api_users_request->info("U12345");
+$api_users_request->list(TRUE);
+$api_users_request->setActive();
+$api_users_request->setPresence("away");
+```
+
+The following links will give you more details about the methods:
+- [deletePhoto](https://api.slack.com/methods/users.deletePhoto)
+- [getPresence](https://api.slack.com/methods/users.getPresence)
+- [identity](https://api.slack.com/methods/users.identity)
+- [info](https://api.slack.com/methods/users.info)
+- [list](https://api.slack.com/methods/users.list)
+- [setActive](https://api.slack.com/methods/users.setActive)
+- [setPhoto](https://api.slack.com/methods/users.setPhoto)
+- [setPresence](https://api.slack.com/methods/users.setPresence)
+
+```php
+use Strime\Slackify\Api\UsersProfile;
+
+// Search requests
+$api_users_profile_request = new UsersProfile("your-api-token-comes-here");
+$api_users_profile_request->get("U12345", TRUE);
+$api_users_profile_request->set("U12345", "{first_name: 'Bobby', last_name: 'Brown'}");
+```
+
+The following links will give you more details about the methods:
+- [get](https://api.slack.com/methods/users.profile.get)
+- [set](https://api.slack.com/methods/users.profile.set)

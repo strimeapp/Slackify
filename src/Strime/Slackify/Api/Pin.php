@@ -23,7 +23,7 @@ class Pin extends AbstractApi
      * @param  string $channel
      * @param  string $file
      * @param  string $file_comment
-     * @param  string $timestamp
+     * @param  float $timestamp
      * @return Pin
      */
     public function add($channel, $file = NULL, $file_comment = NULL, $timestamp = NULL) {
@@ -38,7 +38,7 @@ class Pin extends AbstractApi
         if (($file_comment != NULL) && !is_string($file_comment)) {
             throw new InvalidArgumentException("The type of the file_comment variable is not valid.");
         }
-        if (($timestamp != NULL) && !is_string($timestamp)) {
+        if (($timestamp != NULL) && !is_float($timestamp)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
@@ -54,7 +54,7 @@ class Pin extends AbstractApi
             $arguments["file_comment"] = $file_comment;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (string)$timestamp;
         }
 
         $this->setUrl("pin.add", $arguments);
@@ -78,12 +78,12 @@ class Pin extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
      * @param  string $channel
-     * @return Pin
+     * @return string
      */
     public function list($channel) {
 
@@ -113,19 +113,19 @@ class Pin extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
      * @param  string $channel
      * @param  string $file
      * @param  string $file_comment
-     * @param  string $timestamp
+     * @param  float $timestamp
      * @return Pin
      */
     public function remove($channel, $file = NULL, $file_comment = NULL, $timestamp = NULL) {
@@ -140,7 +140,7 @@ class Pin extends AbstractApi
         if (($file_comment != NULL) && !is_string($file_comment)) {
             throw new InvalidArgumentException("The type of the file_comment variable is not valid.");
         }
-        if (($timestamp != NULL) && !is_string($timestamp)) {
+        if (($timestamp != NULL) && !is_float($timestamp)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
@@ -156,7 +156,7 @@ class Pin extends AbstractApi
             $arguments["file_comment"] = $file_comment;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (string)$timestamp;
         }
 
         $this->setUrl("pin.remove", $arguments);

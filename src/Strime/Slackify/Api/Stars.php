@@ -23,7 +23,7 @@ class Stars extends AbstractApi
      * @param  string $file
      * @param  string $file_comment
      * @param  string $channel
-     * @param  string $timestamp
+     * @param  float $timestamp
      * @return Stars
      */
     public function add($file = NULL, $file_comment = NULL, $channel = NULL, $timestamp = NULL) {
@@ -38,7 +38,7 @@ class Stars extends AbstractApi
         if (!is_string($channel) && ($channel != NULL)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (!is_string($timestamp) && ($timestamp != NULL)) {
+        if (!is_float($timestamp) && ($timestamp != NULL)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
@@ -55,7 +55,7 @@ class Stars extends AbstractApi
             $arguments["channel"] = $channel;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (string)$timestamp;
         }
 
         $this->setUrl("stars.add", $arguments);
@@ -131,7 +131,7 @@ class Stars extends AbstractApi
      * @param  string $file
      * @param  string $file_comment
      * @param  string $channel
-     * @param  string $timestamp
+     * @param  float $timestamp
      * @return Stars
      */
     public function remove($file = NULL, $file_comment = NULL, $channel = NULL, $timestamp = NULL) {
@@ -146,7 +146,7 @@ class Stars extends AbstractApi
         if (!is_string($channel) && ($channel != NULL)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (!is_string($timestamp) && ($timestamp != NULL)) {
+        if (!is_float($timestamp) && ($timestamp != NULL)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
@@ -163,7 +163,7 @@ class Stars extends AbstractApi
             $arguments["channel"] = $channel;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (float)$timestamp;
         }
 
         $this->setUrl("stars.remove", $arguments);

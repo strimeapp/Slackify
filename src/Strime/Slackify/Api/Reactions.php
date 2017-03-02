@@ -24,7 +24,7 @@ class Reactions extends AbstractApi
      * @param  string $file
      * @param  string $file_comment
      * @param  string $channel
-     * @param  string $timestamp
+     * @param  float $timestamp
      * @return Reactions
      */
     public function add($name, $file = NULL, $file_comment = NULL, $channel = NULL, $timestamp = NULL) {
@@ -42,7 +42,7 @@ class Reactions extends AbstractApi
         if (($channel != NULL) && !is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (($timestamp != NULL) && !is_string($timestamp)) {
+        if (($timestamp != NULL) && !is_float($timestamp)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
@@ -61,7 +61,7 @@ class Reactions extends AbstractApi
             $arguments["channel"] = $channel;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (float)$timestamp;
         }
 
         $this->setUrl("reactions.add", $arguments);
@@ -85,15 +85,15 @@ class Reactions extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
      * @param  string $file
      * @param  string $file_comment
      * @param  string $channel
-     * @param  string $timestamp
-     * @param  string $full
+     * @param  float $timestamp
+     * @param  boolean $full
      * @return Reactions
      */
     public function get($file = NULL, $file_comment = NULL, $channel = NULL, $timestamp = NULL, $full = NULL) {
@@ -108,10 +108,10 @@ class Reactions extends AbstractApi
         if (($channel != NULL) && !is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (($timestamp != NULL) && !is_string($timestamp)) {
+        if (($timestamp != NULL) && !is_float($timestamp)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
-        if (($full != NULL) && !is_string($full)) {
+        if (($full != NULL) && !is_bool($full)) {
             throw new InvalidArgumentException("The type of the full variable is not valid.");
         }
 
@@ -128,7 +128,7 @@ class Reactions extends AbstractApi
             $arguments["channel"] = $channel;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (string)$timestamp;
         }
         if ($full != NULL) {
             $arguments["full"] = $full;
@@ -150,12 +150,12 @@ class Reactions extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -210,12 +210,12 @@ class Reactions extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -223,7 +223,7 @@ class Reactions extends AbstractApi
      * @param  string $file
      * @param  string $file_comment
      * @param  string $channel
-     * @param  string $timestamp
+     * @param  float $timestamp
      * @return Reactions
      */
     public function remove($name, $file = NULL, $file_comment = NULL, $channel = NULL, $timestamp = NULL) {
@@ -241,7 +241,7 @@ class Reactions extends AbstractApi
         if (($channel != NULL) && !is_string($channel)) {
             throw new InvalidArgumentException("The type of the channel variable is not valid.");
         }
-        if (($timestamp != NULL) && !is_string($timestamp)) {
+        if (($timestamp != NULL) && !is_float($timestamp)) {
             throw new InvalidArgumentException("The type of the timestamp variable is not valid.");
         }
 
@@ -260,7 +260,7 @@ class Reactions extends AbstractApi
             $arguments["channel"] = $channel;
         }
         if ($timestamp != NULL) {
-            $arguments["timestamp"] = $timestamp;
+            $arguments["timestamp"] = (string)$timestamp;
         }
 
         $this->setUrl("reactions.remove", $arguments);

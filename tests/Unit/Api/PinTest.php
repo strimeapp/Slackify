@@ -21,7 +21,7 @@ class PinTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->add(array(), array());
     }
-    
+
     public function testAddRequestShouldReturnApiObject()
     {
         $api = $this->getApiPinMock('api-token');
@@ -47,15 +47,15 @@ class PinTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->list(array());
     }
-    
-    public function testListRequestShouldReturnApiObject()
+
+    public function testListRequestShouldReturnJsonObject()
     {
         $api = $this->getApiPinMock('api-token');
 
         $api->expects($this->once())
             ->method('list')
             ->with("C12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("string"));
 
         $api->list("C12345");
     }
@@ -73,7 +73,7 @@ class PinTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->remove(array(), array());
     }
-    
+
     public function testRemoveRequestShouldReturnApiObject()
     {
         $api = $this->getApiPinMock('api-token');

@@ -21,7 +21,7 @@ class ReactionsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->add(array(), array());
     }
-    
+
     public function testAddRequestShouldReturnApiObject()
     {
         $api = $this->getApiReactionsMock('api-token');
@@ -47,15 +47,15 @@ class ReactionsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->get(array(), array());
     }
-    
-    public function testGetRequestShouldReturnApiObject()
+
+    public function testGetRequestShouldReturnJsonObject()
     {
         $api = $this->getApiReactionsMock('api-token');
 
         $api->expects($this->once())
             ->method('get')
             ->with("F12345", "Fc12345", "C12345")
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("json"));
 
         $api->get("F12345", "Fc12345", "C12345");
     }
@@ -73,15 +73,15 @@ class ReactionsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->list(array(), array());
     }
-    
-    public function testListRequestShouldReturnApiObject()
+
+    public function testListRequestShouldReturnJsonObject()
     {
         $api = $this->getApiReactionsMock('api-token');
 
         $api->expects($this->once())
             ->method('list')
             ->with("U12345", TRUE)
-            ->will($this->returnValue($api));
+            ->will($this->returnValue("json"));
 
         $api->list("U12345", TRUE);
     }
@@ -99,7 +99,7 @@ class ReactionsTest extends AbstractApiTestCase
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
         $api->remove(array(), array());
     }
-    
+
     public function testRemoveRequestShouldReturnApiObject()
     {
         $api = $this->getApiReactionsMock('api-token');

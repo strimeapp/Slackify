@@ -21,7 +21,7 @@ class Reminders extends AbstractApi
      * {@inheritdoc}
      *
      * @param  string $text
-     * @param  string $time
+     * @param  integer $time
      * @param  string $user
      * @return Reminders
      */
@@ -31,7 +31,7 @@ class Reminders extends AbstractApi
         if (!is_string($text)) {
             throw new InvalidArgumentException("The type of the text variable is not valid.");
         }
-        if (!is_string($time)) {
+        if (!is_integer($time)) {
             throw new InvalidArgumentException("The type of the time variable is not valid.");
         }
         if (($user != NULL) && !is_string($user)) {
@@ -41,7 +41,7 @@ class Reminders extends AbstractApi
         // Set the arguments of the request
         $arguments = array(
             "text" => $text,
-            "time" => $time
+            "time" => (string)$time
         );
 
         if ($user != NULL) {
@@ -64,12 +64,12 @@ class Reminders extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return $this;
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -109,7 +109,7 @@ class Reminders extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -149,7 +149,7 @@ class Reminders extends AbstractApi
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
@@ -184,45 +184,18 @@ class Reminders extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return json_encode($response->{'reminder'});
+        return $json_response->getBody();
     }
 
 
 
-    
+
     /**
      * {@inheritdoc}
      *
      * @return string
      */
     public function list() {
-
-        // Check if the type of the variables is valid.
-        if (($user != NULL) && !is_string($user)) {
-            throw new InvalidArgumentException("The type of the user variable is not valid.");
-        }
-        if (($full != NULL) && !is_bool($full)) {
-            throw new InvalidArgumentException("The type of the full variable is not valid.");
-        }
-        if (!is_integer($count)) {
-            throw new InvalidArgumentException("The type of the count variable is not valid.");
-        }
-        if (!is_integer($page)) {
-            throw new InvalidArgumentException("The type of the page variable is not valid.");
-        }
-
-        // Set the arguments of the request
-        $arguments = array(
-            "count" => $count,
-            "page" => $page
-        );
-
-        if($user != NULL) {
-            $arguments["user"] = $user;
-        }
-        if($full != NULL) {
-            $arguments["full"] = $full;
-        }
 
         $this->setUrl("reminders.list");
 
@@ -240,6 +213,6 @@ class Reminders extends AbstractApi
             throw new RuntimeException('The request to the API failed: '.$response->{'error'}.".");
         }
 
-        return json_encode($response->{'reminders'});
+        return $json_response->getBody();
     }
 }
