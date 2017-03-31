@@ -248,12 +248,12 @@ class GroupsTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_groups')
             ->with("foo")
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list("foo");
+        $api->list_groups("foo");
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -261,11 +261,11 @@ class GroupsTest extends AbstractApiTestCase
         $api = $this->getApiGroupsMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_groups')
             ->with(1)
             ->will($this->returnValue("string"));
 
-        $api->list(1);
+        $api->list_groups(1);
     }
 
     public function testMarkWithWrongParametersReturnsException()

@@ -162,7 +162,7 @@ class Users extends AbstractApi
      * @param  bool $presence
      * @return string
      */
-    public function list($presence = NULL) {
+    public function list_users($presence = NULL) {
 
         // Check if the type of the variables is valid.
         if (!is_string($presence) && ($presence != NULL)) {

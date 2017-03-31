@@ -65,10 +65,10 @@ class ImTest extends AbstractApiTestCase
         $api = $this->getApiImMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_im')
             ->will($this->returnValue("string"));
 
-        $api->list();
+        $api->list_im();
     }
 
     public function testMarkWithWrongParametersReturnsException()

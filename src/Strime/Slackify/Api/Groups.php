@@ -418,7 +418,7 @@ class Groups extends AbstractApi
      * @param  integer $exclude_archived
      * @return Groups
      */
-    public function list($exclude_archived = 0) {
+    public function list_groups($exclude_archived = 0) {
 
         // Check if the type of the variables is valid.
         if (!is_integer($exclude_archived)) {

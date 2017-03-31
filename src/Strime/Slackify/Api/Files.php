@@ -117,7 +117,7 @@ class Files extends AbstractApi
      * @param  integer $page
      * @return Files
      */
-    public function list($user = NULL, $channel = NULL, $ts_from = "now", $ts_to = "all", $types = "all", $count = 100, $page = 1) {
+    public function list_files($user = NULL, $channel = NULL, $ts_from = "now", $ts_to = "all", $types = "all", $count = 100, $page = 1) {
 
         // Check if the type of the variables is valid.
         if (($user != NULL) && !is_string($user)) {

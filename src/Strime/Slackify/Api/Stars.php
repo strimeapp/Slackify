@@ -87,7 +87,7 @@ class Stars extends AbstractApi
      * @param  int $page
      * @return string
      */
-    public function list($count = 100, $page = 1) {
+    public function list_stars($count = 100, $page = 1) {
 
         // Check if the type of the variables is valid.
         if (!is_integer($count)) {

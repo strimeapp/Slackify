@@ -88,12 +88,12 @@ class UsersTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_users')
             ->with(array())
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list(array());
+        $api->list_users(array());
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -101,11 +101,11 @@ class UsersTest extends AbstractApiTestCase
         $api = $this->getApiUsersMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_users')
             ->with("foo")
             ->will($this->returnValue("json"));
 
-        $api->list("foo");
+        $api->list_users("foo");
     }
 
     public function testSetActiveRequestShouldReturnApiObject()

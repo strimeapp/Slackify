@@ -12,10 +12,10 @@ class EmojiTest extends AbstractApiTestCase
         $api = $this->getApiEmojiMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_emoji')
             ->with()
             ->will($this->returnValue("string"));
 
-        $api->list();
+        $api->list_emoji();
     }
 }

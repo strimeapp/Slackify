@@ -367,7 +367,7 @@ class Channels extends AbstractApi
      * @param  string $exclude_archived
      * @return Channels
      */
-    public function list($exclude_archived = 0) {
+    public function list_channels($exclude_archived = 0) {
 
         // Check if the type of the variables is valid.
         if (!is_integer($exclude_archived)) {

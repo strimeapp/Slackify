@@ -165,7 +165,7 @@ class Reactions extends AbstractApi
      * @param  string $page
      * @return Reactions
      */
-    public function list($user = NULL, $full = NULL, $count = 100, $page = 1) {
+    public function list_reactions($user = NULL, $full = NULL, $count = 100, $page = 1) {
 
         // Check if the type of the variables is valid.
         if (($user != NULL) && !is_string($user)) {

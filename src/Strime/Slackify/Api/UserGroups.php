@@ -191,7 +191,7 @@ class UserGroups extends AbstractApi
      * @param  bool $include_users
      * @return string
      */
-    public function list($include_disabled = NULL, $include_count = NULL, $include_users = NULL) {
+    public function list_usergroups($include_disabled = NULL, $include_count = NULL, $include_users = NULL) {
 
         // Check if the type of the variables is valid.
         if (!is_bool($include_disabled) &&  ($include_disabled != NULL)) {

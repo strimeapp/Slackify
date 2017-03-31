@@ -221,12 +221,12 @@ class ChannelsTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_channels')
             ->with(array())
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list(array());
+        $api->list_channels(array());
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -234,11 +234,11 @@ class ChannelsTest extends AbstractApiTestCase
         $api = $this->getApiChannelsMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_channels')
             ->with(1)
             ->will($this->returnValue("string"));
 
-        $api->list(1);
+        $api->list_channels(1);
     }
 
     public function testMarkWithWrongParametersReturnsException()

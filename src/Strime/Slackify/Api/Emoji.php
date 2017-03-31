@@ -22,7 +22,7 @@ class Emoji extends AbstractApi
      *
      * @return Emoji
      */
-    public function list() {
+    public function list_emoji() {
 
         $this->setUrl("emoji.list");
 

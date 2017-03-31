@@ -40,12 +40,12 @@ class StarsTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_stars')
             ->with(array(), array())
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list(array(), array());
+        $api->list_stars(array(), array());
     }
 
     public function testListRequestShouldReturnApiObject()
@@ -53,11 +53,11 @@ class StarsTest extends AbstractApiTestCase
         $api = $this->getApiStarsMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_stars')
             ->with(14, 3)
             ->will($this->returnValue($api));
 
-        $api->list(14, 3);
+        $api->list_stars(14, 3);
     }
 
     public function testRemoveWithWrongParametersReturnsException()

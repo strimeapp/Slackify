@@ -40,12 +40,12 @@ class PinTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_pin')
             ->with(array())
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list(array());
+        $api->list_pin(array());
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -53,11 +53,11 @@ class PinTest extends AbstractApiTestCase
         $api = $this->getApiPinMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_pin')
             ->with("C12345")
             ->will($this->returnValue("string"));
 
-        $api->list("C12345");
+        $api->list_pin("C12345");
     }
 
     public function testRemoveWithWrongParametersReturnsException()

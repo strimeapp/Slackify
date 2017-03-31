@@ -66,12 +66,12 @@ class ReactionsTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_reactions')
             ->with(array(), array())
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list(array(), array());
+        $api->list_reactions(array(), array());
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -79,11 +79,11 @@ class ReactionsTest extends AbstractApiTestCase
         $api = $this->getApiReactionsMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_reactions')
             ->with("U12345", TRUE)
             ->will($this->returnValue("json"));
 
-        $api->list("U12345", TRUE);
+        $api->list_reactions("U12345", TRUE);
     }
 
     public function testRemoveWithWrongParametersReturnsException()

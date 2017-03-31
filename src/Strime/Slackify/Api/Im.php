@@ -127,7 +127,7 @@ class Im extends AbstractApi
      *
      * @return Im
      */
-    public function list() {
+    public function list_im() {
 
         $this->setUrl("im.list");
 

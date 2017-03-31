@@ -85,7 +85,7 @@ class Pin extends AbstractApi
      * @param  string $channel
      * @return string
      */
-    public function list($channel) {
+    public function list_pin($channel) {
 
         // Check if the type of the variables is valid.
         if (!is_string($channel)) {

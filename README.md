@@ -147,7 +147,7 @@ $api_channels_request->invite("C123456", "U56789");
 $api_channels_request->join("C123456");
 $api_channels_request->kick("C123456", "U56789");
 $api_channels_request->leave("C123456");
-$api_channels_request->list(0);
+$api_channels_request->list_channels(0);
 $api_channels_request->mark("C123456", time());
 $api_channels_request->rename("C123456", "New name");
 $api_channels_request->replies("C123456", time());
@@ -217,7 +217,7 @@ use Strime\Slackify\Api\Emoji;
 
 // Emoji requests
 $api_emoji_request = new Emoji("your-api-token-comes-here");
-$api_emoji_request->list();
+$api_emoji_request->list_emoji();
 ```
 
 The following links will give you more details about the methods:
@@ -247,7 +247,7 @@ use Strime\Slackify\Api\Files;
 $api_files_request = new Files("your-api-token-comes-here");
 $api_files_request->delete("F12345");
 $api_files_request->info("F12345", 100, 1);
-$api_files_request->list("U12345", "C12345", "now", "all", "all", 100, 1);
+$api_files_request->list_files("U12345", "C12345", "now", "all", "all", 100, 1);
 $api_files_request->revokePublicURL("F12345");
 $api_files_request->sharedPublicURL("F12345");
 $api_files_request->upload("test.txt", "/path/to/file", "text", "A title", "A comment", "C12345,C67890");
@@ -276,7 +276,7 @@ $api_groups_request->info("G12345");
 $api_groups_request->invite("G12345", "U12345");
 $api_groups_request->kick("G12345", "U12345");
 $api_groups_request->leave("G12345");
-$api_groups_request->list(1);
+$api_groups_request->list_groups(1);
 $api_groups_request->mark("G12345", (string)time());
 $api_groups_request->open("G12345");
 $api_groups_request->rename("G12345", "Foo bar");
@@ -288,8 +288,8 @@ $api_groups_request->unarchive("G12345");
 
 The following links will give you more details about the methods:
 - [archive](https://api.slack.com/methods/groups.archive)
-- [close](https://api.slack.com/methods/groups.create)
-- [create](https://api.slack.com/methods/files.list)
+- [close](https://api.slack.com/methods/groups.close)
+- [create](https://api.slack.com/methods/groups.create)
 - [createChild](https://api.slack.com/methods/groups.createChild)
 - [history](https://api.slack.com/methods/groups.history)
 - [info](https://api.slack.com/methods/groups.info)
@@ -313,7 +313,7 @@ use Strime\Slackify\Api\Im;
 $api_im_request = new Im("your-api-token-comes-here");
 $api_im_request->close("D12345");
 $api_im_request->history("G12345", "now", "0", 0, 100, 1);
-$api_im_request->list();
+$api_im_request->list_im();
 $api_im_request->mark("D12345", time());
 $api_im_request->open("U12345", TRUE);
 $api_im_request->replies("D12345", time());
@@ -335,7 +335,7 @@ use Strime\Slackify\Api\Mpim;
 $api_mpim_request = new Mpim("your-api-token-comes-here");
 $api_mpim_request->close("D12345");
 $api_mpim_request->history("G12345", "now", "0", 0, 100, 1);
-$api_mpim_request->list();
+$api_mpim_request->list_mpim();
 $api_mpim_request->mark("D12345", time());
 $api_mpim_request->open("U12345,U67890", TRUE);
 $api_mpim_request->replies("D12345", time());
@@ -367,7 +367,7 @@ use Strime\Slackify\Api\Pin;
 // Pin requests
 $api_pin_request = new Pin("your-api-token-comes-here");
 $api_pin_request->add("C12345", "F12345", "Fc12345", time());
-$api_pin_request->list("C12345");
+$api_pin_request->list_pin("C12345");
 $api_pin_request->remove("C12345", "F12345", "Fc12345", time());
 ```
 
@@ -383,7 +383,7 @@ use Strime\Slackify\Api\Reactions;
 $api_reactions_request = new Reactions("your-api-token-comes-here");
 $api_reactions_request->add("F12345", "Fc12345", "C12345", time());
 $api_reactions_request->get("F12345", "Fc12345", "C12345");
-$api_reactions_request->list("U12345", TRUE);
+$api_reactions_request->list_reactions("U12345", TRUE);
 $api_reactions_request->remove("F12345", "Fc12345", "C12345", time());
 ```
 
@@ -402,7 +402,7 @@ $api_reminders_request->add("Foo", time(), "U12345");
 $api_reminders_request->complete("Rm12345");
 $api_reminders_request->delete("Rm12345");
 $api_reminders_request->info("Rm12345");
-$api_reminders_request->list();
+$api_reminders_request->list_reminders();
 ```
 
 The following links will give you more details about the methods:
@@ -444,7 +444,7 @@ use Strime\Slackify\Api\Stars;
 // Search requests
 $api_stars_request = new Stars("your-api-token-comes-here");
 $api_stars_request->add("F12345", "Fc12345", "C12345", time());
-$api_stars_request->list(20, 3);
+$api_stars_request->list_stars(20, 3);
 $api_stars_request->remove("F12345", "Fc12345", "C12345", time());
 ```
 
@@ -480,7 +480,7 @@ $api_user_groups_request = new UserGroups("your-api-token-comes-here");
 $api_user_groups_request->create("foo", "bar", "description", "C12345,C67890");
 $api_user_groups_request->disable("S12345", TRUE);
 $api_user_groups_request->enable("S12345", TRUE);
-$api_user_groups_request->list(TRUE, FALSE, TRUE);
+$api_user_groups_request->list_usergroups(TRUE, FALSE, TRUE);
 $api_user_groups_request->update("S12345", "Foo", "bar", "description", "C12345,C67890", TRUE);
 $api_user_groups_request->users.list("S12345", TRUE);
 $api_user_groups_request->users.update("S12345", "U12345,U67890", TRUE);
@@ -504,7 +504,7 @@ $api_users_request->deletePhoto();
 $api_users_request->getPresence("U12345");
 $api_users_request->identity();
 $api_users_request->info("U12345");
-$api_users_request->list(TRUE);
+$api_users_request->list_users(TRUE);
 $api_users_request->setActive();
 $api_users_request->setPresence("away");
 ```

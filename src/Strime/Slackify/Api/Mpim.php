@@ -127,7 +127,7 @@ class Mpim extends AbstractApi
      *
      * @return Mpim
      */
-    public function list() {
+    public function list_mpim() {
 
         $this->setUrl("mpim.list");
 

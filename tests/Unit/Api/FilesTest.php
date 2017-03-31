@@ -66,12 +66,12 @@ class FilesTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_files')
             ->with(array(), array(), array())
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list(array(), array(), array());
+        $api->list_files(array(), array(), array());
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -79,11 +79,11 @@ class FilesTest extends AbstractApiTestCase
         $api = $this->getApiFilesMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_files')
             ->with("U12345", NULL, time())
             ->will($this->returnValue("string"));
 
-        $api->list("U12345", NULL, time());
+        $api->list_files("U12345", NULL, time());
     }
 
     public function testRevokePublicUrlWithWrongParametersReturnsException()

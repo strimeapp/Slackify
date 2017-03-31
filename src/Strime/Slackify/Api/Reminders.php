@@ -195,7 +195,7 @@ class Reminders extends AbstractApi
      *
      * @return string
      */
-    public function list() {
+    public function list_reminders() {
 
         $this->setUrl("reminders.list");
 

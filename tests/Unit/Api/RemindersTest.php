@@ -118,12 +118,12 @@ class RemindersTest extends AbstractApiTestCase
 
         $failure = new InvalidArgumentException('Failed to send the message.');
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_reminders')
             ->with()
             ->will($this->throwException($failure));
 
         $this->setExpectedException('Strime\Slackify\Exception\InvalidArgumentException');
-        $api->list();
+        $api->list_reminders();
     }
 
     public function testListRequestShouldReturnJsonObject()
@@ -131,10 +131,10 @@ class RemindersTest extends AbstractApiTestCase
         $api = $this->getApiRemindersMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_reminders')
             ->with()
             ->will($this->returnValue("json"));
 
-        $api->list();
+        $api->list_reminders();
     }
 }

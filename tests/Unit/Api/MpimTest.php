@@ -65,10 +65,10 @@ class MpimTest extends AbstractApiTestCase
         $api = $this->getApiMpimMock('api-token');
 
         $api->expects($this->once())
-            ->method('list')
+            ->method('list_mpim')
             ->will($this->returnValue("string"));
 
-        $api->list();
+        $api->list_mpim();
     }
 
     public function testMarkWithWrongParametersReturnsException()
