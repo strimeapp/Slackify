@@ -11,6 +11,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+[0.2.3] - 2019-09-18
+--------------------
+
+### Added
+
+### Changed
+
+- Changed the version used by Travis
+
 [0.2.2] - 2019-09-18
 --------------------
 
