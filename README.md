@@ -98,6 +98,9 @@ In order to instantiate a connection to the API, you will need a token. You can 
 
 Each section of the [API documentation](https://api.slack.com/methods) has its own class with the corresponding methods.
 
+
+### API
+
 ```php
 use Strime\Slackify\Api\Api;
 
@@ -109,6 +112,8 @@ $api_request->test();
 The following links will give you more details about the methods, specially about the variables and the error codes:
 - [test](https://api.slack.com/methods/api.test)
 
+
+### Auth
 
 ```php
 use Strime\Slackify\Api\Auth;
@@ -123,6 +128,8 @@ The following links will give you more details about the methods:
 - [revoke](https://api.slack.com/methods/auth.revoke)
 - [test](https://api.slack.com/methods/auth.test)
 
+
+### Bots
 
 ```php
 use Strime\Slackify\Api\Bots;
@@ -176,6 +183,8 @@ The following links will give you more details about the methods:
 - [unarchive](https://api.slack.com/methods/channels.unarchive)
 
 
+### Chats
+
 ```php
 use Strime\Slackify\Api\Chat;
 
@@ -193,6 +202,8 @@ The following links will give you more details about the methods:
 - [postMessage](https://api.slack.com/methods/chat.postMessage)
 - [update](https://api.slack.com/methods/chat.update)
 
+
+### Dnd
 
 ```php
 use Strime\Slackify\Api\Dnd;
@@ -214,6 +225,8 @@ The following links will give you more details about the methods:
 - [teamInfo](https://api.slack.com/methods/dnd.teamInfo)
 
 
+### Emoji
+
 ```php
 use Strime\Slackify\Api\Emoji;
 
@@ -225,6 +238,8 @@ $api_emoji_request->list_emoji();
 The following links will give you more details about the methods:
 - [list](https://api.slack.com/methods/emoji.list)
 
+
+### FilesComments
 
 ```php
 use Strime\Slackify\Api\FilesComments;
@@ -241,6 +256,8 @@ The following links will give you more details about the methods:
 - [delete](https://api.slack.com/methods/files.comments.delete)
 - [edit](https://api.slack.com/methods/files.comments.edit)
 
+
+### Files
 
 ```php
 use Strime\Slackify\Api\Files;
@@ -263,6 +280,8 @@ The following links will give you more details about the methods:
 - [sharedPublicURL](https://api.slack.com/methods/files.sharedPublicURL)
 - [upload](https://api.slack.com/methods/files.upload)
 
+
+### Groups
 
 ```php
 use Strime\Slackify\Api\Groups;
@@ -308,6 +327,8 @@ The following links will give you more details about the methods:
 - [unarchive](https://api.slack.com/methods/groups.unarchive)
 
 
+### Im
+
 ```php
 use Strime\Slackify\Api\Im;
 
@@ -329,6 +350,8 @@ The following links will give you more details about the methods:
 - [open](https://api.slack.com/methods/im.open)
 - [replies](https://api.slack.com/methods/im.replies)
 
+
+### Mpim
 
 ```php
 use Strime\Slackify\Api\Mpim;
@@ -352,6 +375,8 @@ The following links will give you more details about the methods:
 - [replies](https://api.slack.com/methods/mpim.replies)
 
 
+### Oauth
+
 ```php
 use Strime\Slackify\Api\Oauth;
 
@@ -362,6 +387,9 @@ $api_oauth_request->access("client_id", "client_secret", "code", "https://www.fo
 
 The following links will give you more details about the methods:
 - [access](https://api.slack.com/methods/oauth.access)
+
+
+### Pin
 
 ```php
 use Strime\Slackify\Api\Pin;
@@ -377,6 +405,9 @@ The following links will give you more details about the methods:
 - [add](https://api.slack.com/methods/pins.close)
 - [list](https://api.slack.com/methods/pins.list)
 - [remove](https://api.slack.com/methods/pins.remove)
+
+
+### Reactions
 
 ```php
 use Strime\Slackify\Api\Reactions;
@@ -394,6 +425,9 @@ The following links will give you more details about the methods:
 - [get](https://api.slack.com/methods/reactions.get)
 - [list](https://api.slack.com/methods/reactions.list)
 - [remove](https://api.slack.com/methods/reactions.remove)
+
+
+### Reminders
 
 ```php
 use Strime\Slackify\Api\Reminders;
@@ -414,6 +448,9 @@ The following links will give you more details about the methods:
 - [info](https://api.slack.com/methods/reminders.info)
 - [list](https://api.slack.com/methods/reminders.list)
 
+
+### Rtm
+
 ```php
 use Strime\Slackify\Api\Rtm;
 
@@ -424,6 +461,9 @@ $api_rtm_request->start(TRUE, FALSE, TRUE);
 
 The following links will give you more details about the methods:
 - [start](https://api.slack.com/methods/rtm.start)
+
+
+### Search
 
 ```php
 use Strime\Slackify\Api\Search;
@@ -440,6 +480,9 @@ The following links will give you more details about the methods:
 - [files](https://api.slack.com/methods/search.files)
 - [messages](https://api.slack.com/methods/search.messages)
 
+
+### Stars
+
 ```php
 use Strime\Slackify\Api\Stars;
 
@@ -454,6 +497,9 @@ The following links will give you more details about the methods:
 - [add](https://api.slack.com/methods/stars.add)
 - [list](https://api.slack.com/methods/stars.list)
 - [remove](https://api.slack.com/methods/stars.remove)
+
+
+### Team
 
 ```php
 use Strime\Slackify\Api\Team;
@@ -473,6 +519,9 @@ The following links will give you more details about the methods:
 - [info](https://api.slack.com/methods/team.info)
 - [integrationLogs](https://api.slack.com/methods/team.integrationLogs)
 - [profile.get](https://api.slack.com/methods/team.profile.get)
+
+
+### UserGroups
 
 ```php
 use Strime\Slackify\Api\UserGroups;
@@ -497,6 +546,9 @@ The following links will give you more details about the methods:
 - [users.list](https://api.slack.com/methods/usergroups.users.list)
 - [users.update](https://api.slack.com/methods/usergroups.users.update)
 
+
+### Users
+
 ```php
 use Strime\Slackify\Api\Users;
 
@@ -520,6 +572,9 @@ The following links will give you more details about the methods:
 - [setActive](https://api.slack.com/methods/users.setActive)
 - [setPhoto](https://api.slack.com/methods/users.setPhoto)
 - [setPresence](https://api.slack.com/methods/users.setPresence)
+
+
+### UsersProfile
 
 ```php
 use Strime\Slackify\Api\UsersProfile;

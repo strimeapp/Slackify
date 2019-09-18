@@ -9,9 +9,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+### Changed
+
+[0.1.3] - 2019-09-18
+--------------------
+
+### Added
+
 - API interface to send requests to the API
 
 ### Changed
+
+- Improved the way we convert < and > symbols to make sure that link inclusion can work.
 
 [0.1.2] - 2017-01-19
 --------------------

@@ -68,7 +68,7 @@ class Webhook extends AbstractWebhook
 
         // Parse the values to make sure they are valid
         foreach ($values as $key => $value) {
-            
+
             // Create an array with the valid values
             $valid_values = explode(",", self::SLACK_VALID_VALUES);
 
@@ -89,13 +89,13 @@ class Webhook extends AbstractWebhook
 
         // Encode the message
         $values["message"] = str_replace('&', '&amp;', $values["message"]);
-        $values["message"] = str_replace('<', '&lt;', $values["message"]);
-        $values["message"] = str_replace('>', '&gt;', $values["message"]);
+        $values["message"] = str_replace(' < ', ' &lt; ', $values["message"]);
+        $values["message"] = str_replace(' > ', ' &gt; ', $values["message"]);
 
         // Add the link to the message if needed.
         if (isset($values["link"]) && ($values["link"] !== NULL)) {
             $values["message"] .= "\n";
-            $values["message"] .= "<" . $values["link"]; 
+            $values["message"] .= "<" . $values["link"];
             if (isset($values["link_text"]) && ($values["link_text"] !== NULL)) {
                 $values["message"] .= "|" . $values["link_text"];
             }
@@ -171,7 +171,7 @@ class Webhook extends AbstractWebhook
         // Browse the attachments to see if the key is valid.
         foreach ($attachments as $attachment) {
             foreach ($attachment as $key => $value) {
-            
+
                 // Create an array with the valid values
                 $valid_values = explode(",", self::SLACK_VALID_ATTACHMENTS);
 
